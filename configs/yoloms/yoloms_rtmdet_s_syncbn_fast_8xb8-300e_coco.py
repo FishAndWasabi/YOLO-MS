@@ -1,7 +1,7 @@
 _base_ = './yoloms_rtmdet_l_syncbn_fast_8xb8-300e_coco.py'
 
 # ========================modified parameters======================
-layers_num = 1
+layers_num=2
 deepen_factor = 1
 widen_factor = 0.54
 out_channels=240
