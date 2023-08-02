@@ -9,6 +9,7 @@ from mmdet.utils import ConfigType, OptConfigType, OptMultiConfig
 from mmyolo.registry import MODELS
 from mmyolo.models.backbones.base_backbone import BaseBackbone
 from ..layers.msblock import MSBlock
+from mmyolo.models.layers.yolo_bricks import SPPFBottleneck
 
 @MODELS.register_module()
 class YoloMS(BaseBackbone):

@@ -10,7 +10,6 @@ img_scale = _base_.img_scale
 
 model = dict(
     backbone=dict(
-        arch='C3-K3579-80-s',
         out_attention_cfg=None,
         deepen_factor=deepen_factor,
         widen_factor=widen_factor,

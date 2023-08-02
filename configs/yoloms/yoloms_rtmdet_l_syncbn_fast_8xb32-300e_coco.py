@@ -1,4 +1,4 @@
-_base_ = ['../../rtmdet/rtmdet_l_syncbn_fast_8xb32-300e_coco.py']
+_base_ = ['../rtmdet/rtmdet_l_syncbn_fast_8xb32-300e_coco.py']
 
 loss_bbox_weight = 2.0
 train_batch_size_per_gpu = 32
