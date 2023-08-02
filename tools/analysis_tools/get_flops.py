@@ -63,6 +63,8 @@ from mmengine.registry import init_default_scope
 
 from mmyolo.utils import switch_to_deploy
 
+from yoloms import *
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Get a detector flops')

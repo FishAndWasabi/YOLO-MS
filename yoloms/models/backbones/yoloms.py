@@ -9,10 +9,10 @@ from mmdet.utils import ConfigType, OptConfigType, OptMultiConfig
 from mmyolo.registry import MODELS
 from mmyolo.models.backbones.base_backbone import BaseBackbone
 from ..layers.msblock import MSBlock
-from mmyolo.models.layers.yolo_bricks import SPPFBottleneck
+from mmyolo.models.backbones.csp_darknet import YOLOv8CSPDarknet
 
 @MODELS.register_module()
-class YoloMS(BaseBackbone):
+class YOLOMS(BaseBackbone):
     arch_settings = { 
         'C3-K3579-80': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
                         [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],

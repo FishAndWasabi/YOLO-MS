@@ -13,7 +13,7 @@ from ..layers.msblock import MSBlock
 from mmyolo.models.necks.base_yolo_neck import BaseYOLONeck
 
 @MODELS.register_module()
-class YoloMSPAFPN(BaseYOLONeck):
+class YOLOMSPAFPN(BaseYOLONeck):
     def __init__(
         self,
         in_channels: Sequence[int],

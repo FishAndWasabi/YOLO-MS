@@ -67,7 +67,6 @@ class MSBlock(nn.Module):
         self.mid_expand_ratio = mid_expand_ratio
         groups = int(self.mid_channel*self.mid_expand_ratio)
         self.layers_num = layers_num
-        print(self.layers_num)
         self.in_attention = None
         if in_attention_cfg is not None:
             in_attention_cfg["dim"] = in_channel
@@ -102,7 +101,6 @@ class MSBlock(nn.Module):
                                     conv_cfg=conv_cfg,
                                     act_cfg=act_cfg,
                                     norm_cfg=norm_cfg) for _ in range(int(self.layers_num))]
-            print("the number of layer", len(mid_convs))
             self.mid_convs.append(nn.Sequential(*mid_convs))
         self.mid_convs = nn.ModuleList(self.mid_convs)
         self.out_conv = ConvModule(self.in_channel,

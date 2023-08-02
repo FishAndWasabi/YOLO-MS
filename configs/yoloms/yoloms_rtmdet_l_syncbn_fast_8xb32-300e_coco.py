@@ -9,7 +9,7 @@ out_channels = 240
 model = dict(
     backbone=dict(
         _delete_=True,
-        type='YoloMS',
+        type='YOLOMS',
         arch='C3-K3579-80',
         deepen_factor=deepen_factor,
         widen_factor=widen_factor,
@@ -24,7 +24,7 @@ model = dict(
         act_cfg=dict(type='SiLU', inplace=True)),
     neck=dict(
         _delete_=True,
-        type='YoloMSPAFPN',
+        type='YOLOMSPAFPN',
         deepen_factor=deepen_factor,
         widen_factor=widen_factor,
         in_channels=[320, 640, 1280],

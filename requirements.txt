@@ -2,3 +2,4 @@ mmyolo==0.5.0
 tensorboard
 wandb
 einops
+albumentations

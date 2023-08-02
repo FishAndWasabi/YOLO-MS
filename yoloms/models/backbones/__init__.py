@@ -1,5 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from .yoloms import YoloMS
+from .yoloms import YOLOMS
+from .yolomsv8 import YOLOMSv8
+
 __all__ = [
-    'YoloMS'
+    'YOLOMS', 'YOLOMSv8'
 ]
