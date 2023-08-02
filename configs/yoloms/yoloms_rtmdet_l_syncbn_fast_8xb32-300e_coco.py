@@ -16,7 +16,6 @@ model = dict(
         in_expand_ratio=3,
         mid_expand_ratio=2,
         layers_num=3,
-        out_attention_cfg=dict(type="SE"),
         down_ratio = 1,
         norm_cfg=dict(type='BN'),
         act_cfg=dict(type='SiLU', inplace=True)),
