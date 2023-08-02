@@ -17,7 +17,7 @@ def readme():
     return content
 
 
-version_file = 'mmyolo/version.py'
+version_file = 'yoloms/version.py'
 
 
 def get_version():
@@ -126,9 +126,9 @@ def add_mim_extension():
     else:
         return
 
-    filenames = ['tools', 'configs', 'demo', 'model-index.yml']
+    filenames = ['tools', 'configs']
     repo_path = osp.dirname(__file__)
-    mim_path = osp.join(repo_path, 'mmyolo', '.mim')
+    mim_path = osp.join(repo_path, 'yoloms', '.mim')
     os.makedirs(mim_path, exist_ok=True)
 
     for filename in filenames:
@@ -158,16 +158,16 @@ def add_mim_extension():
 if __name__ == '__main__':
     add_mim_extension()
     setup(
-        name='mmyolo',
+        name='yoloms',
         version=get_version(),
-        description='OpenMMLab Toolbox of YOLO',
+        description='OpenMMLab Toolbox of YOLOMS',
         long_description=readme(),
         long_description_content_type='text/markdown',
         author='MMYOLO Contributors',
         author_email='openmmlab@gmail.com',
         keywords='computer vision, object detection',
         url='https://github.com/open-mmlab/mmyolo',
-        packages=find_packages(exclude=('configs', 'tools', 'demo')),
+        packages=find_packages(exclude=('configs', 'tools')),
         include_package_data=True,
         classifiers=[
             'Development Status :: 5 - Production/Stable',
@@ -182,9 +182,9 @@ if __name__ == '__main__':
         install_requires=parse_requirements('requirements/runtime.txt'),
         extras_require={
             'all': parse_requirements('requirements.txt'),
-            'tests': parse_requirements('requirements/tests.txt'),
-            'build': parse_requirements('requirements/build.txt'),
-            'mim': parse_requirements('requirements/mminstall.txt'),
+            # 'tests': parse_requirements('requirements/tests.txt'),
+            # 'build': parse_requirements('requirements/build.txt'),
+            # 'mim': parse_requirements('requirements/mminstall.txt'),
         },
         ext_modules=[],
         cmdclass={'build_ext': BuildExtension},
