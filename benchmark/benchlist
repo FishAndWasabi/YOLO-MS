@@ -1,0 +1,8 @@
+rtmdet rtmdet_m_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m_s-se_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m1_s-se_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m2_s-se_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m3_s-se_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m4_s-se_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m5_s-se_syncbn_fast_8xb32-300e_coco
+rtmdet/yolovx yolovx_m5_s_syncbn_fast_8xb32-300e_coco
