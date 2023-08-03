@@ -1,4 +1,4 @@
-_base_ = '../yoloms/yoloms_rtmdet_tiny_syncbn_fast_8xb8-300e_coco.py'
+_base_ = '../yoloms/yoloms_rtmdet_tiny_syncbn_fast_4xb16-300e_coco.py'
 widen_factor=0.4
 model = dict(
     neck=dict(
