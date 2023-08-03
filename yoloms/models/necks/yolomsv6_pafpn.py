@@ -1,14 +1,15 @@
 import torch.nn as nn
 
 from mmyolo.registry import MODELS
-from mmyolo.models.necks.yolov8_pafpn import YOLOv8PAFPN
+from mmyolo.models.necks.yolov6_pafpn import YOLOv6RepPAFPN
 from mmyolo.models.utils import make_divisible
+from mmcv.cnn import ConvModule
 
 from ..layers import MSBlock
 
 
 @MODELS.register_module()
-class YOLOMSv8PAFPN(YOLOv8PAFPN):
+class YOLOMSv6PAFPN(YOLOv6RepPAFPN):
     def __init__(self,
                  in_expand_ratio=1,
                  in_down_ratio=1,
@@ -32,10 +33,9 @@ class YOLOMSv8PAFPN(YOLOv8PAFPN):
         Returns:
             nn.Module: The top down layer.
         """
-        return MSBlock(
-            make_divisible((self.in_channels[idx - 1] + self.in_channels[idx]),
-                           self.widen_factor),
-            make_divisible(self.out_channels[idx - 1], self.widen_factor),
+        layer0 = MSBlock(
+            int((self.out_channels[idx - 1] + self.in_channels[idx - 1]) * self.widen_factor),
+            int(self.out_channels[idx - 1] * self.widen_factor),
             in_expand_ratio=self.in_expand_ratio,
             in_down_ratio=self.in_down_ratio,
             mid_expand_ratio=self.mid_expand_ratio,
@@ -43,6 +43,19 @@ class YOLOMSv8PAFPN(YOLOv8PAFPN):
             layers_num=self.layers_num,
             norm_cfg=self.norm_cfg,
             act_cfg=self.act_cfg)
+        if idx == 1:
+            return layer0
+        elif idx == 2:
+            layer1 = ConvModule(
+                in_channels=int(self.out_channels[idx - 1] *
+                                self.widen_factor),
+                out_channels=int(self.out_channels[idx - 2] *
+                                 self.widen_factor),
+                kernel_size=1,
+                stride=1,
+                norm_cfg=self.norm_cfg,
+                act_cfg=self.act_cfg)
+            return nn.Sequential(layer0, layer1)
     
     def build_bottom_up_layer(self, idx: int) -> nn.Module:
         """build bottom up layer.
@@ -54,10 +67,8 @@ class YOLOMSv8PAFPN(YOLOv8PAFPN):
             nn.Module: The bottom up layer.
         """
         return MSBlock(
-            make_divisible(
-                (self.out_channels[idx] + self.out_channels[idx + 1]),
-                self.widen_factor),
-            make_divisible(self.out_channels[idx + 1], self.widen_factor),
+            int(self.out_channels[idx] * 2 * self.widen_factor),
+            int(self.out_channels[idx + 1] * self.widen_factor),
             in_expand_ratio=self.in_expand_ratio,
             in_down_ratio=self.in_down_ratio,
             mid_expand_ratio=self.mid_expand_ratio,

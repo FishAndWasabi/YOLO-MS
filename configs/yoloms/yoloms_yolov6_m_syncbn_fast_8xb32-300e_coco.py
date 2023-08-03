@@ -1,33 +1,16 @@
-_base_ = './yolov6_s_syncbn_fast_8xb32-300e_coco.py'
+_base_ = './yoloms_yolov6_s_syncbn_fast_8xb32-300e_coco.py'
 
 # ======================= Possible modified parameters =======================
-# -----model related-----
-# The scaling factor that controls the depth of the network structure
-deepen_factor = 0.6
-# The scaling factor that controls the width of the network structure
-widen_factor = 0.75
+layers_num = 1
+widen_factor = 1
 
-# -----train val related-----
-affine_scale = 0.9  # YOLOv5RandomAffine scaling ratio
+affine_scale = 0.9
 
-# ============================== Unmodified in most cases ===================
-model = dict(
-    backbone=dict(
-        type='YOLOv6CSPBep',
-        deepen_factor=deepen_factor,
-        widen_factor=widen_factor,
-        hidden_ratio=2. / 3,
-        block_cfg=dict(type='RepVGGBlock'),
-        act_cfg=dict(type='ReLU', inplace=True)),
-    neck=dict(
-        type='YOLOv6CSPRepPAFPN',
-        deepen_factor=deepen_factor,
-        widen_factor=widen_factor,
-        block_cfg=dict(type='RepVGGBlock'),
-        hidden_ratio=2. / 3,
-        block_act_cfg=dict(type='ReLU', inplace=True)),
-    bbox_head=dict(
-        type='YOLOv6Head', head_module=dict(widen_factor=widen_factor)))
+model = dict(backbone=dict(layers_num=layers_num,
+                           widen_factor=widen_factor),
+             neck=dict(layers_num=layers_num,
+                       widen_factor=widen_factor),
+             bbox_head=dict(head_module=dict(widen_factor=widen_factor)))
 
 mosaic_affine_pipeline = [
     dict(
