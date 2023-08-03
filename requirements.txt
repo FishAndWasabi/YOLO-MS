@@ -1,3 +1,6 @@
+mmengine>=0.6.0
+mmcv>=2.0.0rc4,<2.1.0
+mmdet>=3.0.0rc6,<3.1.0
 mmyolo==0.5.0
 tensorboard
 wandb
