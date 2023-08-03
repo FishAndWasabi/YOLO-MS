@@ -161,4 +161,4 @@ cython_debug/
 work_dirs
 .dist_test
 data
-data/coco
+data/*
