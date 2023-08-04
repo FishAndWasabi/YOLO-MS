@@ -6,7 +6,7 @@ model = dict(
         _delete_=True,
         type='YOLOMSFPN',
         in_channels=[320, 640, 1280],
-        out_channels=256,
+        out_channels=240,
         num_outs=3,
         norm_cfg=dict(type='BN'),
         act_cfg=dict(type='SiLU', inplace=True),

@@ -70,16 +70,16 @@ class YOLOMSFPN(BaseModule):
 
         for i in range(self.start_level, self.backbone_end_level):
             l_conv = ConvModule(
-                in_channels[i],
-                out_channels,
+                self.in_channels[i],
+                self.out_channels,
                 1,
                 conv_cfg=conv_cfg,
                 norm_cfg=norm_cfg if not self.no_norm_on_lateral else None,
                 act_cfg=act_cfg,
                 inplace=False)
             fpn_conv = MSBlock(
-                out_channels,
-                out_channels,
+                self.out_channels,
+                self.out_channels,
                 in_expand_ratio=in_expand_ratio,
                 in_down_ratio = in_down_ratio,
                 mid_expand_ratio=mid_expand_ratio,
@@ -100,8 +100,8 @@ class YOLOMSFPN(BaseModule):
                     in_channels = self.in_channels[self.backbone_end_level - 1]
                 else:
                     in_channels = out_channels
-                extra_fpn_conv = fpn_conv = MSBlock(out_channels,
-                                                    out_channels,
+                extra_fpn_conv = fpn_conv = MSBlock(self.out_channels,
+                                                    self.out_channels,
                                                     in_expand_ratio=in_expand_ratio,
                                                     in_down_ratio = in_down_ratio,
                                                     mid_expand_ratio=mid_expand_ratio,
