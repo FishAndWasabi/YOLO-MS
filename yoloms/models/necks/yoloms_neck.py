@@ -34,18 +34,21 @@ class YOLOMSNeck(BaseModule):
         self.in_channels = [make_divisible(in_channel, widen_factor) for in_channel in in_channels]
         self.out_channels = make_divisible(out_channels, widen_factor)
 
-        for i in range(self.start_level, self.backbone_end_level):
+        self.lateral_convs = nn.ModuleList()
+        self.fpn_convs = nn.ModuleList()
+        
+        for in_channel in self.in_channels:
             l_conv = ConvModule(
-                in_channels[i],
-                out_channels,
+                in_channel,
+                self.out_channels,
                 1,
                 conv_cfg=conv_cfg,
-                norm_cfg=norm_cfg if not self.no_norm_on_lateral else None,
+                norm_cfg=norm_cfg,
                 act_cfg=act_cfg,
                 inplace=False)
             fpn_conv = MSBlock(
-                out_channels,
-                out_channels,
+                self.out_channels,
+                self.out_channels,
                 in_expand_ratio=in_expand_ratio,
                 in_down_ratio = in_down_ratio,
                 mid_expand_ratio=mid_expand_ratio,
