@@ -1,7 +1,7 @@
 _base_ = '../yoloms/yoloms_rtmdet_tiny_syncbn_fast_8xb8-300e_coco.py'
-widen_factor=0.4
+widen_factor=0.45
 layers_num=1
-out_channels=260
+out_channels=256
 
 model = dict(
     backbone=dict(
@@ -12,6 +12,7 @@ model = dict(
         _delete_=True,
         type='YOLOMSNeck',
         in_channels=[320, 640, 1280],
+        feat_channels=[128, 256, 512],
         out_channels=out_channels,
         norm_cfg=dict(type='BN'),
         act_cfg=dict(type='SiLU', inplace=True),
@@ -24,5 +25,6 @@ model = dict(
         ),
     bbox_head=dict(head_module=dict(widen_factor=widen_factor,
                                     in_channels=out_channels,
+                                    stacked_convs=2,
                                     feat_channels=out_channels))
     )
