@@ -17,13 +17,14 @@ class YOLOMSNeck(BaseModule):
     def __init__(self,
                  in_channels: List[int],
                  out_channels: int,
+                 feat_channels,
                  conv_cfg: OptConfigType = None,
                  norm_cfg: OptConfigType = None,
                  act_cfg: OptConfigType = None,
                  init_cfg: MultiConfig = dict(type='Xavier', 
                                               layer='Conv2d',
                                               distribution='uniform'),
-                 in_expand_ratio=1,
+                 in_expand_ratio=3,
                  in_down_ratio=1,
                  mid_expand_ratio=2,
                  kernel_sizes=[1,3,3],
@@ -31,23 +32,25 @@ class YOLOMSNeck(BaseModule):
                  widen_factor=1):
         super().__init__(init_cfg=init_cfg)
         assert isinstance(in_channels, list)
-        self.in_channels = [make_divisible(in_channel, widen_factor) for in_channel in in_channels]
-        self.out_channels = make_divisible(out_channels, widen_factor)
+        self.in_channels = [int(in_channel * widen_factor) for in_channel in in_channels]
+        self.feat_channels = [int(feat_channel * widen_factor) for feat_channel in feat_channels]
+        self.out_channels = int(out_channels * widen_factor)
 
         self.lateral_convs = nn.ModuleList()
         self.fpn_convs = nn.ModuleList()
         
-        for in_channel in self.in_channels:
+        for in_channel, feat_channel in zip(self.in_channels,
+                                            self.feat_channels):
             l_conv = ConvModule(
                 in_channel,
-                self.out_channels,
+                feat_channel,
                 1,
                 conv_cfg=conv_cfg,
                 norm_cfg=norm_cfg,
                 act_cfg=act_cfg,
                 inplace=False)
             fpn_conv = MSBlock(
-                self.out_channels,
+                feat_channel,
                 self.out_channels,
                 in_expand_ratio=in_expand_ratio,
                 in_down_ratio = in_down_ratio,
@@ -57,9 +60,19 @@ class YOLOMSNeck(BaseModule):
                 conv_cfg=conv_cfg, 
                 act_cfg=act_cfg,
                 norm_cfg=norm_cfg)
+            # fpn_conv = ConvModule(
+            #     feat_channel,
+            #     self.out_channels,
+            #     3,
+            #     padding=2,
+            #     conv_cfg=conv_cfg,
+            #     norm_cfg=norm_cfg,
+            #     act_cfg=act_cfg,
+            #     inplace=False)
 
             self.lateral_convs.append(l_conv)
-            self.fpn_convs.append(fpn_conv)
+            self.fpn_convs.append(nn.Sequential(fpn_conv))
+            
             
     def forward(self, inputs: Tuple[Tensor]) -> tuple:
 
