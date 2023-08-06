@@ -8,6 +8,7 @@ random_resize_ratio_range = (0.5, 2.0)
 mosaic_max_cached_images = 40
 # Number of cached images in mixup
 mixup_max_cached_images = 20
+val_batch_size_per_gpu = 32
 
 train_pipeline = [
     dict(type='LoadImageFromFile', file_client_args=_base_.file_client_args),
