@@ -2,8 +2,8 @@ _base_ = './rtmdet_s_syncbn_fast_8xb32-300e_coco.py'
 checkpoint = 'https://download.openmmlab.com/mmdetection/v3.0/rtmdet/cspnext_rsb_pretrain/cspnext-tiny_imagenet_600e.pth'  # noqa
 
 # ========================modified parameters======================
-deepen_factor = 0.167
-widen_factor = 0.375
+deepen_factor = 0.2
+widen_factor = 0.45
 img_scale = _base_.img_scale
 
 # ratio range for random resize
@@ -12,7 +12,7 @@ random_resize_ratio_range = (0.5, 2.0)
 mosaic_max_cached_images = 20
 # Number of cached images in mixup
 mixup_max_cached_images = 10
-
+norm_cfg = dict(type='BN')  
 # =======================Unmodified in most cases==================
 model = dict(
     backbone=dict(
@@ -20,8 +20,15 @@ model = dict(
         widen_factor=widen_factor,
         init_cfg=dict(checkpoint=checkpoint)),
     neck=dict(
+        _delete_=True,
+        type="NoNeck",
         deepen_factor=deepen_factor,
         widen_factor=widen_factor,
+        in_channels=[256, 512, 1024],
+        out_channels=256,
+        num_csp_blocks=3,
+        norm_cfg=norm_cfg,
+        act_cfg=dict(type='SiLU', inplace=True)
     ),
     bbox_head=dict(head_module=dict(widen_factor=widen_factor)))
 
