@@ -2,7 +2,7 @@ _base_ = './yoloms_yolov6_s_syncbn_fast_8xb32-300e_coco.py'
 
 # ======================= Possible modified parameters =======================
 layers_num = 1
-widen_factor = 0.25
+widen_factor = 0.35
 
 
 # ============================== Unmodified in most cases ===================
