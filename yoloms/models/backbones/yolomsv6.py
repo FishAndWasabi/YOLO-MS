@@ -15,18 +15,14 @@ from mmdet.utils import ConfigType, OptMultiConfig
 @MODELS.register_module()
 class YOLOMSv6(BaseBackbone):
     arch_settings = { 
-        'C3-K3579-80': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
-                        [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
-                        [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
-                        [MSBlock, 640, 1280, [1, (9,9),(9,9)], True]],
-        'C3-K3579':    [[MSBlock, 64, 128,   [1, (3,3),(3,3)], False], 
-                        [MSBlock, 128, 256,  [1, (5,5),(5,5)], False],
-                        [MSBlock, 256, 512,  [1, (7,7),(7,7)], False], 
-                        [MSBlock, 512, 1024, [1, (9,9),(9,9)], True]],
+        'C3-K3579': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
+                     [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
+                     [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
+                     [MSBlock, 640, 1280, [1, (9,9),(9,9)], True]],
     }
 
     def __init__(self,
-                 arch: str = 'C3-K3579-80',
+                 arch: str = 'C3-K3579',
                  conv_cfg: OptConfigType = None,
                  in_expand_ratio=3,
                  mid_expand_ratio=2,
@@ -34,7 +30,6 @@ class YOLOMSv6(BaseBackbone):
                  in_attention_cfg=None,
                  mid_attention_cfg=None,
                  out_attention_cfg=None,
-                #  down_ratio = 1,
                  spp_config = dict(type="SPPFBottleneck",kernel_sizes=5),
                  block_cfg: ConfigType = dict(type='RepVGGBlock'),
                  **kwargs):
@@ -48,7 +43,6 @@ class YOLOMSv6(BaseBackbone):
         self.out_attention_cfg = out_attention_cfg
         
         self.spp_config = spp_config
-        # self.down_ratio = down_ratio
         
         self.layers_num=layers_num
         self.block_cfg = block_cfg
@@ -79,7 +73,6 @@ class YOLOMSv6(BaseBackbone):
         
         in_channels = int(in_channels * self.widen_factor)
         out_channels = int(out_channels * self.widen_factor)
-        # downsample_channel = int(in_channels * self.down_ratio)
 
         stage = []
         conv_layer = ConvModule(

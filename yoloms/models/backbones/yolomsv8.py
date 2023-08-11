@@ -14,18 +14,14 @@ from mmyolo.models.utils import make_divisible, make_round
 @MODELS.register_module()
 class YOLOMSv8(BaseBackbone):
     arch_settings = { 
-        'C3-K3579-80': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
-                        [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
-                        [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
-                        [MSBlock, 640, None, [1, (9,9),(9,9)], True]],
-        'C3-K3579':    [[MSBlock, 64, 128,   [1, (3,3),(3,3)], False], 
-                        [MSBlock, 128, 256,  [1, (5,5),(5,5)], False],
-                        [MSBlock, 256, 512,  [1, (7,7),(7,7)], False], 
-                        [MSBlock, 512, None, [1, (9,9),(9,9)], True]],
+        'C3-K3579': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
+                     [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
+                     [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
+                     [MSBlock, 640, None, [1, (9,9),(9,9)], True]]
     }
 
     def __init__(self,
-                 arch: str = 'C3-K3579-80',
+                 arch: str = 'C3-K3579',
                  last_stage_out_channels: int = 1024,
                  conv_cfg: OptConfigType = None,
                  in_expand_ratio=1,
@@ -34,7 +30,6 @@ class YOLOMSv8(BaseBackbone):
                  in_attention_cfg=None,
                  mid_attention_cfg=None,
                  out_attention_cfg=None,
-                #  down_ratio = 1,
                  spp_config = dict(type="SPPFBottleneck",kernel_sizes=5),
                  **kwargs):
         self.arch_settings[arch][-1][2] = last_stage_out_channels
@@ -48,7 +43,6 @@ class YOLOMSv8(BaseBackbone):
         self.out_attention_cfg = out_attention_cfg
         
         self.spp_config = spp_config
-        # self.down_ratio = down_ratio
         
         self.layers_num=layers_num
         
@@ -77,7 +71,6 @@ class YOLOMSv8(BaseBackbone):
         
         in_channels = make_divisible(in_channels, self.widen_factor)
         out_channels = make_divisible(out_channels, self.widen_factor)
-        # downsample_channel = int(in_channels * self.down_ratio)
 
         stage = []
         conv_layer = ConvModule(
