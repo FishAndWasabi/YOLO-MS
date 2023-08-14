@@ -15,6 +15,8 @@ This repository contains the official implementation of the following paper:
 
 
 
+
+
 ## Get Started
 
 ### 1. Prerequisites
@@ -23,37 +25,65 @@ This repository contains the official implementation of the following paper:
 - CUDA >= 11.3
 - pytorch==1.12.1
 - torchvision=0.13.1
-- mmcv==2.0.0rc4
-- mmengine==0.7.3
 
-Our implementation based on MMDetection==3.0.0rc6. For more information about installation, please see the [official instructions](https://mmdetection.readthedocs.io/en/3.x/).
+Our implementation based on MMYOLO==0.5.0. For more information about installation, please see the [official instructions](https://mmyolo.readthedocs.io/en/latest/).
 
 
 **Step 0.** Create Conda Environment
 
 ```shell
-conda create --name openmmlab python=3.8 -y
-conda activate openmmlab
+conda create --name yolo-ms python=3.8 -y
+conda activate yolo-ms
+```
 
+**Step 1.** Install [Pytorch](https://pytorch.org)
 
+```shell
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+```
+
+**Step 2.** Install [MMEngine](https://github.com/open-mmlab/mmengine), [MMCV](https://github.com/open-mmlab/mmcv), [MMDet](https://github.com/open-mmlab/mmdet) and [MMYOLO](https://github.com/open-mmlab/mmyolo) using [MIM](https://github.com/open-mmlab/mim).
+
+```shell
+pip install -U openmim
+mim install "mmengine==0.7.1"
+mim install "mmcv==2.0.0rc4"
+mim install "mmdet==3.0.0"
+mim install "mmyolo==0.5.0"
+```
+
+**Step 3.** Install YOLO-MS.
+
+```shell
+git clone https://github.com/FishAndWasabi/YOLO-MS.git
+cd YOLO-MS
+pip install -v -e .
+# "-v" means verbose, or more output
+# "-e" means installing a project in editable mode,
+# thus any local modifications made to the code will take effect without reinstallation.
+```
 
 ### 2. Training
 
 **Single GPU**
 
 ```shell
-python tools/train.py configs/crosskd/${CONFIG_FILE} [optional arguments]
+python tools/train.py ${CONFIG_FILE} [optional arguments]
 ```
 
 **Multi GPU**
 
 ```shell
-CUDA_VISIBLE_DEVICES=x,x,x,x python tools/dist_train.sh \
-    configs/crosskd/${CONFIG_FILE} ${GPU_NUM} [optional arguments]
+CUDA_VISIBLE_DEVICES=x,x,x,x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
 ```
 
 ### 3. Evaluation
 
 ```shell
-python tools/test.py configs/crosskd/${CONFIG_FILE} ${CHECKPOINT_FILE}
+python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 ```
+
+
+### 4. Deployment
+
+TODO
