@@ -14,27 +14,15 @@ from mmyolo.models.backbones.csp_darknet import YOLOv8CSPDarknet
 @MODELS.register_module()
 class YOLOMS(BaseBackbone):
     arch_settings = { 
-        'C3-K3579-80': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
-                        [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
-                        [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
-                        [MSBlock, 640, 1280, [1, (9,9),(9,9)], True]],
-        'C3-K57911-80': [[MSBlock, 80, 160,   [1, (5,5),(5,5)], False], 
-                        [MSBlock, 160, 320,  [1, (7,7),(7,7)], False],
-                        [MSBlock, 320, 640,  [1, (9,9),(9,9)], False], 
-                        [MSBlock, 640, 1280, [1, (11,11),(11,11)], True]],
-        'C3-K371115-80': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
-                        [MSBlock, 160, 320,  [1, (7,7),(7,7)], False],
-                        [MSBlock, 320, 640,  [1, (11,11),(11,11)], False], 
-                        [MSBlock, 640, 1280, [1, (15,15),(15,15)], True]],
-        'C3-K11-80':   [[MSBlock, 80, 160,  [1, (11,11),(11,11)], False], 
-                        [MSBlock, 160, 320,  [1, (11,11),(11,11)], False],
-                        [MSBlock, 320, 640,  [1, (11,11),(11,11)], False], 
-                        [MSBlock, 640, 1280, [1, (11,11),(11,11)], True]],
+        'C3-K3579': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
+                     [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
+                     [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
+                     [MSBlock, 640, 1280, [1, (9,9),(9,9)], True]],
     }
 
     def __init__(
         self,
-        arch: str = 'C3-K3579-80',
+        arch: str = 'C3-K3579',
         deepen_factor: float = 1.0,
         widen_factor: float = 1.0,
         input_channels: int = 3,
