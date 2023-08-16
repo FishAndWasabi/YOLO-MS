@@ -17,8 +17,18 @@ This repository contains the official implementation of the following paper:
 
 
 
-
-<img src='assets/teaser_params.png' alt='YOLOMS_TEASER0' width='500px'/>
+<table>
+  <tbody>
+    <tr>
+        <td>
+            <img src='asserts/teaser_flops.png' alt='YOLOMS_TEASER0' width='500px'/>
+        </td>
+        <td>
+            <img src='asserts/teaser_params.png' alt='YOLOMS_TEASER0' width='500px'/>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 
 - First of all, [:wrench: Dependencies and Installation](#wrench-dependencies-and-installation).
