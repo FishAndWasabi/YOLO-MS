@@ -16,9 +16,9 @@ This repository contains the official implementation of the following paper:
 \[Video (TBD)\]
 
 
-## Introduction
 
-<img src='https://github.com/Srameo/LED/assets/51229295/022505b0-8ff0-445b-ab1f-bb79b48ecdbd' alt='ICCV23_LED_TEASER0' width='500px'/>
+
+<img src='assets/teaser_params.png' alt='YOLOMS_TEASER0' width='500px'/>
 
 
 - First of all, [:wrench: Dependencies and Installation](#wrench-dependencies-and-installation).
