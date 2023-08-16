@@ -1,4 +1,5 @@
-# Copyright (c) OpenMMLab. All rights reserved.
+# Refer to MMYOLO
+# Copyright (c) MCG-NKU. All rights reserved.
 import argparse
 import copy
 import os

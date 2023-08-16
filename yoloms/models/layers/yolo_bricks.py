@@ -1,4 +1,5 @@
-# Copyright (c) OpenMMLab. All rights reserved.
+# Refer to MMYOLO
+# Copyright (c) MCG-NKU. All rights reserved.
 from typing import Sequence, Union
 
 import torch
@@ -9,6 +10,7 @@ from mmengine.model import BaseModule
 from torch import Tensor
 
 from mmyolo.registry import MODELS
+
 
 @MODELS.register_module()
 class SPPFBottleneck(BaseModule):
@@ -36,7 +38,6 @@ class SPPFBottleneck(BaseModule):
         init_cfg (dict or list[dict], optional): Initialization config dict.
             Defaults to None.
     """
-
     def __init__(self,
                  in_channels: int,
                  out_channels: int,

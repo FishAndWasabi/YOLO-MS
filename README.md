@@ -1,4 +1,4 @@
-## <p align=center> 🚀 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection </p>
+<h2> <p align=center> 🚀 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection </p> </h2>
 
 <div align="center">
 
@@ -34,29 +34,27 @@ This repository contains the official implementation of the following paper:
 </table>
 
 
-## 📄 Table of Contents
+<h2> 📄 Table of Contents </h2>
 
-- [ 🚀 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection ](#--yolo-ms-rethinking-multi-scale-representation-learning-for-real-time-object-detection-)
-- [📄 Table of Contents](#-table-of-contents)
-- [✨ News](#-news)
-- [🛠️ Dependencies and Installation](#️-dependencies-and-installation)
-- [🤖 Training and Evaluation](#-training-and-evaluation)
-- [🏡 Model Zoo](#-model-zoo)
-- [🏗️ Other Task](#️-other-task)
-- [📖 Citation](#-citation)
-- [📜 License](#-license)
-- [📮 Contact](#-contact)
-- [🤝 Acknowledgement](#-acknowledgement)
+- [✨ News 🔝](#-news-)
+- [🛠️ Dependencies and Installation 🔝](#️-dependencies-and-installation-)
+- [🤖 Training and Evaluation 🔝](#-training-and-evaluation-)
+- [🏡 Model Zoo 🔝](#-model-zoo-)
+- [🏗️ Supported Tasks 🔝](#️-supported-tasks-)
+- [📖 Citation 🔝](#-citation-)
+- [📜 License 🔝](#-license-)
+- [📮 Contact 🔝](#-contact-)
+- [🤝 Acknowledgement 🔝](#-acknowledgement-)
 
 
-## ✨ News
+## ✨ News [🔝](#📄-table-of-contents)
 
 > Future work can be found in [todo.md](docs/todo.md).
 
 - **Aug, 2023**: Our code is publicly available!
 
 
-## 🛠️ Dependencies and Installation
+## 🛠️ Dependencies and Installation [🔝](#📄-table-of-contents)
 
 > We provide a simple scrpit `install.sh` for installation, or refer to [install.md](docs/install.md) for more details.
 
@@ -77,7 +75,7 @@ This repository contains the official implementation of the following paper:
     ```
 
 
-## 🤖 Training and Evaluation
+## 🤖 Training and Evaluation [🔝](#📄-table-of-contents)
 
 1. Training
 
@@ -103,9 +101,18 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 
 
-## 🏡 Model Zoo
+## 🏡 Model Zoo [🔝](#📄-table-of-contents)
 
-1. YOLOMS
+- [ ] YOLOv5-MS
+- [ ] YOLOX-MS
+- [x] [YOLOv6-MS](configs/yolov6)
+- [ ] YOLOv7-MS
+- [ ] PPYOLOE-MS
+- [x] [YOLOv8-MS](configs/yolov8)
+- [x] [YOLO-MS (Based on RTMDet)](configs/rtmdet)
+
+<details>
+<summary><b>1. YOLO-MS</b></summary>
 
 <table>
     <thead>
@@ -117,6 +124,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <th> FLOPs(G) </th>
         <th> boxAP </th>
         <th> boxAP(small) </th>
+        <th> boxAP(middle) </th>
         <th> boxAP(large) </th>
         <th> Config File </th>
         <th> 🔗 Download Links </th>
@@ -131,9 +139,10 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> FLOPs(G) </td>
         <td> boxAP </td>
         <td> boxAP(small) </td>
+        <td> boxAP(small) </td>
         <td> boxAP(large) </td>
-        <td> Config File </td>
-        <td> 🔗 Download Links </td>
+        <td> [<a href="./configs/yoloms/yoloms-xs_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="">model</a>] </td>
     </tr>
     <tr>
         <td> YOLO-MS-S </td>
@@ -143,9 +152,10 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> FLOPs(G) </td>
         <td> boxAP </td>
         <td> boxAP(small) </td>
+        <td> boxAP(small) </td>
         <td> boxAP(large) </td>
-        <td> Config File </td>
-        <td> 🔗 Download Links </td>
+        <td> [<a href="./configs/yoloms/yoloms-xs_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="">model</a>] </td>
     </tr>
     <tr>
         <td> YOLO-MS </td>
@@ -155,34 +165,40 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> FLOPs(G) </td>
         <td> boxAP </td>
         <td> boxAP(small) </td>
+        <td> boxAP(small) </td>
         <td> boxAP(large) </td>
-        <td> Config File </td>
-        <td> 🔗 Download Links </td>
+        <td> [<a href="./configs/yoloms/yoloms-xs_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="">model</a>] </td>
     </tr>
     </tbody>
 </table>
 
+</details>
 
-2. YOLOv6
-
-
-
-3. YOLOv8
+<details>
+<summary><b>2. YOLOv6-MS</b></summary>
 
 
-4. More YOLOs (TBD)
+</details>
+
+<details>
+<summary><b>3. YOLOv8-MS</b></summary>
 
 
-## 🏗️ Other Task
-
-1. Instance Segmentation (TBD)
-2. Rotated Object Detection (TBD)
-3. Object Tracking (TBD)
-4. Detection in Crowded Scene (TBD)
-5. Small Object Detection (TBD)
+</details>
 
 
-## 📖 Citation
+## 🏗️ Supported Tasks [🔝](#📄-table-of-contents)
+
+- [x] Object Detection
+- [ ] Instance Segmentation (TBD)
+- [ ] Rotated Object Detection (TBD)
+- [ ] Object Tracking (TBD)
+- [ ] Detection in Crowded Scene (TBD)
+- [ ] Small Object Detection (TBD)
+
+
+## 📖 Citation [🔝](#📄-table-of-contents)
 
 If you find our repo useful for your research, please cite us:
 
@@ -197,34 +213,30 @@ If you find our repo useful for your research, please cite us:
 }
 ```
 
-This project is based on the open source codebase [MMDetection](https://github.com/open-mmlab/mmdetection).
+This project is based on the open source codebase [MMYOLO](https://github.com/open-mmlab/mmyolo).
+
 ```
-@article{mmdetection,
-  title   = {{MMDetection}: Open MMLab Detection Toolbox and Benchmark},
-  author  = {Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and
-             Xiong, Yu and Li, Xiaoxiao and Sun, Shuyang and Feng, Wansen and
-             Liu, Ziwei and Xu, Jiarui and Zhang, Zheng and Cheng, Dazhi and
-             Zhu, Chenchen and Cheng, Tianheng and Zhao, Qijie and Li, Buyu and
-             Lu, Xin and Zhu, Rui and Wu, Yue and Dai, Jifeng and Wang, Jingdong
-             and Shi, Jianping and Ouyang, Wanli and Loy, Chen Change and Lin, Dahua},
-  journal= {arXiv preprint arXiv:1906.07155},
-  year={2019}
+@misc{mmyolo2022,
+    title={{MMYOLO: OpenMMLab YOLO} series toolbox and benchmark},
+    author={MMYOLO Contributors},
+    howpublished = {\url{https://github.com/open-mmlab/mmyolo}},
+    year={2022}
 }
 ```
 
 
-## 📜 License
+## 📜 License [🔝](#📄-table-of-contents)
 
 Licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for Non-commercial use only. Any commercial use should get formal permission first.
 
 
-## 📮 Contact
+## 📮 Contact [🔝](#📄-table-of-contents)
 
 For technical questions, please contact `chenyuming[AT]mail.nankai.edu.cn`.
 For commercial licensing, please contact `cmm[AT]nankai.edu.cn` and `andrewhoux[AT]gmail.com`.
 
 
-## 🤝 Acknowledgement
+## 🤝 Acknowledgement [🔝](#📄-table-of-contents)
 
 This repo is modified from open source real-time object detection codebase [MMYOLO](https://github.com/open-mmlab/mmyolo).
 The README file is referred to [LED](https://github.com/Srameo/LED) and [CrossKD](https://github.com/jbwang1997/CrossKD)

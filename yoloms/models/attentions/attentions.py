@@ -1,15 +1,10 @@
+# Copyright (c) MCG-NKU. All rights reserved.
 import torch
-import numpy as np
 from torch import nn
-import torch.nn.functional as F
 
 from einops import rearrange
 from mmyolo.registry import MODELS
-from ..utils import autopad
-from mmcv.cnn import ConvModule
 
-from typing import Sequence, Union
-from mmdet.utils import ConfigType
 
 @MODELS.register_module()
 class SE(nn.Module):

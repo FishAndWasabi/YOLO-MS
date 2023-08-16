@@ -163,3 +163,7 @@ work_dirs
 data
 data/*
 log/*
+
+*.pth
+final_checkpoints
+yolovx_checkpoint

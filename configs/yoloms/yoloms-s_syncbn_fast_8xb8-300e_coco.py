@@ -1,10 +1,10 @@
-_base_ = './yoloms_rtmdet_l_syncbn_fast_8xb8-300e_coco.py'
+_base_ = './yoloms_syncbn_fast_8xb8-300e_coco.py'
 
 # ========================modified parameters======================
-layers_num=2
-deepen_factor = 1
+# The scaling factor that controls the depth of the network structure
+deepen_factor = 1/3
+# The scaling factor that controls the width of the network structure
 widen_factor = 0.54
-out_channels=240
 
 img_scale = _base_.img_scale
 
@@ -16,16 +16,11 @@ mosaic_max_cached_images = 40
 mixup_max_cached_images = 20
 
 # =======================Unmodified in most cases==================
-model = dict(
-    backbone=dict(
-        deepen_factor=deepen_factor,
-        widen_factor=widen_factor,
-        layers_num=layers_num),
-    neck=dict(
-        deepen_factor=deepen_factor,
-        widen_factor=widen_factor,
-        layers_num=layers_num),
-    bbox_head=dict(head_module=dict(widen_factor=widen_factor)))
+model = dict(backbone=dict(deepen_factor=deepen_factor,
+                           widen_factor=widen_factor),
+             neck=dict(deepen_factor=deepen_factor,
+                       widen_factor=widen_factor),
+             bbox_head=dict(head_module=dict(widen_factor=widen_factor)))
 
 train_pipeline = [
     dict(type='LoadImageFromFile', file_client_args=_base_.file_client_args),

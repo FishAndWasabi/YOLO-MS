@@ -7,7 +7,8 @@ deepen_factor = 1/3
 widen_factor =  0.4
 
 model = dict(backbone=dict(deepen_factor=deepen_factor,
-                           widen_factor=widen_factor),
+                           widen_factor=widen_factor,
+                           attention_cfg=dict(type="SE")),
              neck=dict(deepen_factor=deepen_factor,
                        widen_factor=widen_factor),
              bbox_head=dict(head_module=dict(widen_factor=widen_factor)))

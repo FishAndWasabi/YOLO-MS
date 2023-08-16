@@ -1,5 +1,5 @@
-# Copyright (c) OpenMMLab. All rights reserved.
-import argparse
+# Refer to MMYOLO
+# Copyright (c) MCG-NKU. All rights reserved.
 import logging
 import os
 import os.path as osp

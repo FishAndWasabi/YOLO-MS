@@ -1,3 +1,4 @@
+# Copyright (c) MCG-NKU. All rights reserved.
 import torch
 import torch.nn as nn
 import math

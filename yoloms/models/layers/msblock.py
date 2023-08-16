@@ -1,19 +1,35 @@
+# Copyright (c) MCG-NKU. All rights reserved.
+from typing import Sequence, Union
+
 import torch
 import torch.nn as nn
-from mmcv.cnn import ConvModule
-from ..utils import autopad
+from torch import Tensor
+
 from mmyolo.registry import MODELS
-import torch.nn.functional as F
+from mmdet.utils import OptConfigType
+from mmcv.cnn import ConvModule
+
+from ..utils import autopad
 
 
 class MSBlockLayer(nn.Module):
+    """MSBlockLayer
+
+    Args:
+        in_channels (int): The input channels of this Module.
+        out_channels (int): The output channels of this Module.
+        kernel_size (int, tuple[int]): The kernel size of this Module.
+        conv_cfg (:obj:`ConfigDict` or dict, optional): Config dict for convolution layer. Defaults to None.
+        norm_cfg (:obj:`ConfigDict` or dict): Dictionary to construct and config norm layer. Defaults to None.
+        act_cfg (:obj:`ConfigDict` or dict): Config dict for activation layer. Defaults to None.
+    """
     def __init__(self,
-                 in_channel,
-                 out_channel,
-                 kernel_size,
-                 conv_cfg=None,
-                 act_cfg=None,
-                 norm_cfg=None) -> None:
+                 in_channel: int,
+                 out_channel: int,
+                 kernel_size: Union[int, Sequence[int]],
+                 conv_cfg: OptConfigType = None,
+                 act_cfg: OptConfigType = None,
+                 norm_cfg: OptConfigType = None) -> None:
         super().__init__()
         self.in_conv = ConvModule(in_channel,
                                   out_channel,
@@ -36,7 +52,11 @@ class MSBlockLayer(nn.Module):
                                    act_cfg=act_cfg, 
                                    norm_cfg=norm_cfg)
     
-    def forward(self, x):
+    def forward(self, x: Tensor) -> Tensor:
+        """Forward process
+        Args:
+            x (Tensor): The input tensor.
+        """
         x = self.in_conv(x)
         x = self.mid_conv(x)
         x = self.out_conv(x)
@@ -45,42 +65,52 @@ class MSBlockLayer(nn.Module):
 
 
 class MSBlock(nn.Module):
+    """MSBlock
+
+    Args:
+        in_channel (int): The input channels of this Module.
+        out_channel (int): The output channels of this Module.
+        kernel_sizes (list(int, tuple[int])): Sequential of kernel sizes in MS-Block.
+            
+        in_expand_ratio (float): Channel expand ratio for inputs of MS-Block. Defaults to 3.
+        mid_expand_ratio (float): Channel expand ratio for each branch in MS-Block. Defaults to 2.
+        layers_num (int): Number of layer in MS-Block. Defaults to 3.
+        in_down_ratio (float): Channel down ratio for downsample conv layer in MS-Block. Defaults to 1.
+        
+        attention_cfg (:obj:`ConfigDict` or dict, optional): Config dict for attention in MS-Block. Defaults to None.
+        
+        conv_cfg (:obj:`ConfigDict` or dict, optional): Config dict for convolution layer. Defaults to None.
+        norm_cfg (:obj:`ConfigDict` or dict): Dictionary to construct and config norm layer. Defaults to dict(type='BN').
+        act_cfg (:obj:`ConfigDict` or dict): Config dict for activation layer. Defaults to dict(type='SiLU', inplace=True).
+    """
     def __init__(self, 
-                 in_channel,
-                 out_channel,
-                 in_expand_ratio=1,
-                 in_down_ratio = 1,
-                 mid_expand_ratio=2,
-                 in_attention_cfg=None,
-                 mid_attention_cfg=None,
-                 out_attention_cfg=None,
-                 kernel_sizes=[1,5,(3,15),(15,3)],
-                 layers_num=3,
-                 conv_cfg=None, 
-                 act_cfg=dict(type='SiLU'),
-                 norm_cfg=dict(type='BN'),
+                 in_channel: int,
+                 out_channel: int,
+                 kernel_sizes: Sequence[Union[int, Sequence[int]]],
+                 
+                 in_expand_ratio: float = 3.,
+                 mid_expand_ratio: float = 2.,
+                 layers_num: int = 3,
+                 in_down_ratio: float = 1.,
+                 
+                 attention_cfg: OptConfigType = None,
+                 conv_cfg: OptConfigType = None, 
+                 norm_cfg: OptConfigType = dict(type='BN'),
+                 act_cfg: OptConfigType = dict(type='SiLU', inplace=True),
                  ) -> None:
         super().__init__()
-
+                
         self.in_channel = int(in_channel*in_expand_ratio)//in_down_ratio
         self.mid_channel = self.in_channel//len(kernel_sizes)
         self.mid_expand_ratio = mid_expand_ratio
         groups = int(self.mid_channel*self.mid_expand_ratio)
         self.layers_num = layers_num
         self.in_attention = None
-        if in_attention_cfg is not None:
-            in_attention_cfg["dim"] = in_channel
-            self.in_attention = MODELS.build(in_attention_cfg)
-        
-        self.mid_attention = None
-        if mid_attention_cfg is not None:
-            mid_attention_cfg["dim"] = self.mid_channel
-            self.mid_attention = MODELS.build(mid_attention_cfg)
             
-        self.out_attention = None
-        if out_attention_cfg is not None:
-            out_attention_cfg["dim"] = out_channel
-            self.out_attention = MODELS.build(out_attention_cfg)
+        self.attention = None
+        if attention_cfg is not None:
+            attention_cfg["dim"] = out_channel
+            self.attention = MODELS.build(attention_cfg)
 
         
         self.in_conv = ConvModule(in_channel,
@@ -110,11 +140,12 @@ class MSBlock(nn.Module):
                                    act_cfg=act_cfg,
                                    norm_cfg=norm_cfg)
     
-    def forward(self, x):
-        out = x
-        if self.in_attention is not None:
-            out = self.in_attention(out)  
-        out = self.in_conv(out)
+    def forward(self, x: Tensor) -> Tensor:
+        """Forward process
+        Args:
+            x (Tensor): The input tensor.
+        """
+        out = self.in_conv(x)
         channels = []
         for i,mid_conv in enumerate(self.mid_convs):
             channel = out[:,i*self.mid_channel:(i+1)*self.mid_channel,...]
@@ -122,10 +153,8 @@ class MSBlock(nn.Module):
                 channel = channel + channels[i-1]
             channel = mid_conv(channel)
             channels.append(channel)
-        if self.mid_attention is not None:
-            channels = self.mid_attention(channels)
         out = torch.cat(channels, dim=1)
         out = self.out_conv(out)
-        if self.out_attention is not None:
-            out = self.out_attention(out)  
+        if self.attention is not None:
+            out = self.attention(out)  
         return out

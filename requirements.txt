@@ -1,4 +1,0 @@
-tensorboard
-wandb
-einops
-albumentations

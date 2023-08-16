@@ -1,3 +1,4 @@
+# Copyright (c) MCG-NKU. All rights reserved.
 def autopad(k, p=None):  # kernel, padding
     # Pad to 'same'
     if p is None:

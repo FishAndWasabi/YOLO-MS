@@ -1,4 +1,4 @@
-# Copyright (c) OpenMMLab. All rights reserved.
+# Copyright (c) MCG-NKU. All rights reserved.
 
 __version__ = '0.1.0'
 
