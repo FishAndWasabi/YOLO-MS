@@ -36,15 +36,22 @@ This repository contains the official implementation of the following paper:
 
 ## 📄 Table of Contents
 
-- [✨ New](#✨-news-)
-- [🛠️ Dependencies and Installation](#🛠️-Dependencies-and-Installation-)
-- [🤖 Training and Evaluation](#🤖-Training-and-Evaluation-)
-- [🏡 Model Zoo](#🏡-Model-Zoo-)
-- [🏗️ Other Task](#🏗️-Other-Task-)
-- [📖 Citation](#📖-Citation-)
-- [📜 License](#📜-License-)
-- [📮 Contact](#📮-Contact-)
-- [🤝 Acknowledgement](#🤝-Acknowledgement-)
+- [ 🚀 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection ](#--yolo-ms-rethinking-multi-scale-representation-learning-for-real-time-object-detection-)
+- [📄 Table of Contents](#-table-of-contents)
+- [✨ News](#-news)
+- [🛠️ Dependencies and Installation](#️-dependencies-and-installation)
+- [🤖 Training and Evaluation](#-training-and-evaluation)
+- [🏡 Model Zoo](#-model-zoo)
+- [🏗️ Other Task](#️-other-task)
+  - [Instance Segmentation (TBD)](#instance-segmentation-tbd)
+  - [Rotated Object Detection (TBD)](#rotated-object-detection-tbd)
+  - [Object Tracking (TBD)](#object-tracking-tbd)
+  - [Detection in Crowded Scene (TBD)](#detection-in-crowded-scene-tbd)
+  - [Small Object Detection (TBD)](#small-object-detection-tbd)
+- [📖 Citation](#-citation)
+- [📜 License](#-license)
+- [📮 Contact](#-contact)
+- [🤝 Acknowledgement](#-acknowledgement)
 
 
 ## ✨ News
@@ -56,57 +63,54 @@ This repository contains the official implementation of the following paper:
 
 ## 🛠️ Dependencies and Installation
 
-We provide a simple scrpit `install.sh` for installation, or refer to [install.md](docs/install.md) for more details.
+> We provide a simple scrpit `install.sh` for installation, or refer to [install.md](docs/install.md) for more details.
 
-### 1. Clone and enter the repo.
+1. Clone and enter the repo.
+    ```shell
+    git clone https://github.com/FishAndWasabi/YOLO-MS.git
+    cd YOLO-MS
+    ```
 
-```shell
-git clone https://github.com/FishAndWasabi/YOLO-MS.git
-cd YOLO-MS
-```
+2. Run `install.sh`.
+    ```shell
+    bash install.sh
+    ```
 
-### 2. Run `install.sh`.
-
-```shell
-bash install.sh
-```
-
-### 3. Activate your environment!
-
-```shell
-conda activate YOLO-MS
-```
+3. Activate your environment!
+    ```shell
+    conda activate YOLO-MS
+    ```
 
 
 ## 🤖 Training and Evaluation
 
-### 1. Training
+1. Training
 
-1.1 **Single GPU**
+   1.1 **Single GPU**
 
-```shell
-python tools/train.py ${CONFIG_FILE} [optional arguments]
-```
+   ```shell
+   python tools/train.py ${CONFIG_FILE} [optional arguments]
+   ```
 
-1.2 **Multi GPU**
+   1.2 **Multi GPU**
 
-```shell
-CUDA_VISIBLE_DEVICES=x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
-```
+   ```shell
+   CUDA_VISIBLE_DEVICES=x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
+   ```
 
-### 3. Evaluation
+2. Evaluation
 
 ```shell
 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 ```
 
-### 4. Deployment (TBD)
+3. Deployment (TBD)
 
 
 
 ## 🏡 Model Zoo
 
-### YOLOMS
+1. **YOLOMS**
 
 <table>
     <thead>
@@ -164,12 +168,14 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 </table>
 
 
-### YOLOv6
+2. **YOLOv6**
 
 
 
-### YOLOv8
+3. **YOLOv8**
 
+
+4. **More YOLOs** (TBD)
 
 
 ## 🏗️ Other Task
