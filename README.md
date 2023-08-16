@@ -105,11 +105,11 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 - [ ] YOLOv5-MS
 - [ ] YOLOX-MS
-- [x] [YOLOv6-MS](configs/yolov6)
+- [x] [YOLOv6-MS](configs/yolov6_ms)
 - [ ] YOLOv7-MS
 - [ ] PPYOLOE-MS
-- [x] [YOLOv8-MS](configs/yolov8)
-- [x] [YOLO-MS (Based on RTMDet)](configs/rtmdet)
+- [x] [YOLOv8-MS](configs/yolov8_ms)
+- [x] [YOLO-MS (Based on RTMDet)](configs/yoloms)
 
 <details>
 <summary><b>1. YOLO-MS</b></summary>
@@ -141,7 +141,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 24.0 </td>
         <td> 47.8 </td>
         <td> 59.1 </td>
-        <td> [<a href="./configs/yoloms/yoloms-xs_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms-xs_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1dCjyDfMY-tThlPb7tQXXgrpHLIWSS_Zr/view?usp=sharing">model</a>] </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 23.7 </td>
         <td> 48.3 </td>
         <td> 60.3 </td>
-        <td> [<a href="./configs/yoloms/yoloms-xs-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms-xs-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1-GdPJX_GAfH9sXAHdRmFRTNR0kL0l5v8/view?usp=drive_link">model</a>] </td>
     </tr>
     <tr>
@@ -167,7 +167,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 27.5 </td>
         <td> 50.6 </td>
         <td> 62.9 </td>
-        <td> [<a href="./configs/yoloms/yoloms-s_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms-s_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1inr-4aI9C4hOynBgmNqKyZ4-60MSoX5F/view?usp=drive_link">model</a>] </td>
     </tr>
     <tr>
@@ -180,7 +180,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 26.9 </td>
         <td> 50.5 </td>
         <td> 63.0 </td>
-        <td> [<a href="./configs/yoloms/yoloms-s-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms-s-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/12mtXMOJDfuGdxImuPewq3-WJ0kanPjAx/view?usp=drive_link">model</a>] </td>
     </tr>
     <tr>
@@ -193,7 +193,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 33.2 </td>
         <td> 54.8 </td>
         <td> 66.4 </td>
-        <td> [<a href="./configs/yoloms/yoloms_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/10JOBcIDkKDE4UpcKypnf8izSYJ_-z0P7/view?usp=drive_link">model</a>] </td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 33.2 </td>
         <td> 54.8 </td>
         <td> 66.4 </td>
-        <td> [<a href="./configs/yoloms/yoloms-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1Gf5g7Jssu88wZpPQDwNiqMIEkK4MpsdM/view?usp=drive_link">model</a>] </td>
     </tr>
     <tr>
@@ -271,7 +271,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 26.0 </td>
         <td> 48.3 </td>
         <td> 57.8 </td>
-        <td> [<a href="./configs/yolomsv6/yolov6-ms_t_syncbn_fast_8xb32-400e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yolomsv6/yolov6-ms_t_syncbn_fast_8xb32-400e_coco.py">config</a>]  </td>
         <!-- <td> [<a href="">model</a>] </td> -->
         <td> [model] (TBD) </td>
     </tr>
@@ -346,7 +346,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 22.0 </td>
         <td> 44.6 </td>
         <td> 53.7 </td>
-        <td> [<a href="./configs/yolomsv8/yolov8-ms_n_syncbn_fast_8xb16-500e_coco.py">config</a>]  </td>
+        <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yolomsv8/yolov8-ms_n_syncbn_fast_8xb16-500e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1ssePhnZ4UQSRJk_NvweiQPA5llRFVlpw/view?usp=drive_link">model</a>] </td>
     </tr>
     <tr>
