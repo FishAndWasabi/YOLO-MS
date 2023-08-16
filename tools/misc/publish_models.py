@@ -35,7 +35,6 @@ def process_checkpoint(in_file, out_file):
             checkpoint['state_dict'].pop(key)
         elif 'prior_inds' in key:
             checkpoint['state_dict'].pop(key)
-
     if torch.__version__ >= '1.6':
         torch.save(checkpoint, out_file, _use_new_zipfile_serialization=False)
     else:
