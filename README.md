@@ -15,6 +15,8 @@ This repository contains the official implementation of the following paper:
 
 \[Homepage (TBD)\]
 \[[Paper](https://arxiv.org/abs/2308.05480)]
+\[知乎 (TBD)\]
+\[[AIWalker](https://mp.weixin.qq.com/s/FfG9vNM_a2k_zflWfuimsw)\]
 \[Poster (TBD)\]
 \[Video (TBD)\]
 
@@ -106,12 +108,77 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 ### YOLOMS
 
+<table>
+    <thead>
+    <tr>
+        <th style="width: 300pt"> Model </th>
+        <th> Resolution </th>
+        <th> Epoch </th>
+        <th> Params(M) </th>
+        <th> FLOPs(G) </th>
+        <th> boxAP </th>
+        <th> boxAP(small) </th>
+        <th> boxAP(large) </th>
+        <th> Config File </th>
+        <th> 🔗 Download Links </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="width: 300pt"> YOLO-MS-XS </td>
+        <td> 640 </td>
+        <td> 300 </td>
+        <td> Params(M) </td>
+        <td> FLOPs(G) </td>
+        <td> boxAP </td>
+        <td> boxAP(small) </td>
+        <td> boxAP(large) </td>
+        <td> Config File </td>
+        <td> 🔗 Download Links </td>
+    </tr>
+    <tr>
+        <td> YOLO-MS-S </td>
+        <td> 640 </td>
+        <td> 300 </td>
+        <td> Params(M) </td>
+        <td> FLOPs(G) </td>
+        <td> boxAP </td>
+        <td> boxAP(small) </td>
+        <td> boxAP(large) </td>
+        <td> Config File </td>
+        <td> 🔗 Download Links </td>
+    </tr>
+    <tr>
+        <td> YOLO-MS </td>
+        <td> 640 </td>
+        <td> 300 </td>
+        <td> Params(M) </td>
+        <td> FLOPs(G) </td>
+        <td> boxAP </td>
+        <td> boxAP(small) </td>
+        <td> boxAP(large) </td>
+        <td> Config File </td>
+        <td> 🔗 Download Links </td>
+    </tr>
+    </tbody>
+</table>
+
 
 ### YOLOv6
 
 
+
 ### YOLOv8
 
+
+
+## 🏗️ Other Task
+
+### Instance Segmentation (TBD)
+### Rotated Object Detection (TBD)
+### Object Tracking (TBD)
+### Detection in Crowded Scene (TBD)
+### Small Object Detection (TBD)
 
 
 ## 📖 Citation
@@ -144,14 +211,17 @@ This project is based on the open source codebase [MMDetection](https://github.c
 }
 ```
 
+
 ## 📜 License
 
 Licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for Non-commercial use only. Any commercial use should get formal permission first.
+
 
 ## 📮 Contact
 
 For technical questions, please contact `chenyuming[AT]mail.nankai.edu.cn`.
 For commercial licensing, please contact `cmm[AT]nankai.edu.cn` and `andrewhoux[AT]gmail.com`.
+
 
 ## 🤝 Acknowledgement
 
