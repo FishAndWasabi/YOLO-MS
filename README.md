@@ -1,6 +1,8 @@
 ## <p align=center> 💪 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection </p>
 
+<!-- <center>
 ![Python 3.8](https://img.shields.io/badge/python-3.8-g) ![pytorch 1.12.1](https://img.shields.io/badge/pytorch-1.12.0-blue.svg)
+<center/> -->
 
 This repository contains the official implementation of the following paper:
 
@@ -14,12 +16,22 @@ This repository contains the official implementation of the following paper:
 \[Video (TBD)\]
 
 
+## Introduction
+
+<img src='https://github.com/Srameo/LED/assets/51229295/022505b0-8ff0-445b-ab1f-bb79b48ecdbd' alt='ICCV23_LED_TEASER0' width='500px'/>
+
+
+- First of all, [:wrench: Dependencies and Installation](#wrench-dependencies-and-installation).
+- For **academic research**, please refer to [pretrained-models.md](docs/pretrained-models.md) and [:robot: Training and Evaluation](#robot-training-and-evaluation).
+- For **further development**, please refer to [:construction: Further Development](#construction-further-development).
+- For **using LED on your own camera**, please refer to [:sparkles: Pretrained Models](#sparkles-pretrained-models) and [:camera: Quick Demo](#camera-quick-demo).
+
 
 
 
 ## Get Started
 
-### 1. Prerequisites
+### 1. Dependencies and Installation
 
 - Ubuntu >= 20.04
 - CUDA >= 11.3
@@ -63,7 +75,7 @@ pip install -v -e .
 # thus any local modifications made to the code will take effect without reinstallation.
 ```
 
-### 2. Training
+### 2. Training and Evaluation
 
 **Single GPU**
 
@@ -92,6 +104,63 @@ TODO
 
 
 
-## Results
+## :sparkles: Model Zoo
+
+### YOLOMS
 
 
+### YOLOv6
+
+
+### YOLOv8
+
+
+
+## :book: Citation
+
+If you find our repo useful for your research, please cite us:
+
+```
+@misc{chen2023yoloms,
+      title={YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-time Object Detection}, 
+      author={Yuming Chen and Xinbin Yuan and Ruiqi Wu and Jiabao Wang and Qibin Hou and Ming-Ming Cheng},
+      year={2023},
+      eprint={2308.05480},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
+This project is based on the open source codebase [MMDetection](https://github.com/open-mmlab/mmdetection).
+```
+@article{mmdetection,
+  title   = {{MMDetection}: Open MMLab Detection Toolbox and Benchmark},
+  author  = {Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and
+             Xiong, Yu and Li, Xiaoxiao and Sun, Shuyang and Feng, Wansen and
+             Liu, Ziwei and Xu, Jiarui and Zhang, Zheng and Cheng, Dazhi and
+             Zhu, Chenchen and Cheng, Tianheng and Zhao, Qijie and Li, Buyu and
+             Lu, Xin and Zhu, Rui and Wu, Yue and Dai, Jifeng and Wang, Jingdong
+             and Shi, Jianping and Ouyang, Wanli and Loy, Chen Change and Lin, Dahua},
+  journal= {arXiv preprint arXiv:1906.07155},
+  year={2019}
+}
+```
+
+## :scroll: License
+
+Licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for Non-commercial use only. Any commercial use should get formal permission first.
+
+## :postbox: Contact
+
+For technical questions, please contact `chenyuming@mail.nankai.edu.cn` and ``.
+
+## :handshake: Acknowledgement
+
+This repo is modified from open source object detection codebase [MMDetection](https://github.com/open-mmlab/mmdetection).
+
+
+We also thank all of our contributors.
+
+<a href="https://github.com/Srameo/LED/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Srameo/LED" />
+</a>

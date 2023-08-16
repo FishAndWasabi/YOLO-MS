@@ -1,4 +1,4 @@
-_base_ = ['yoloms_rtmdet_l_syncbn_fast_8xb8-300e_coco.py']
+_base_ = ['yoloms_l_syncbn_fast_8xb8-300e_coco.py']
 
 layers_num=2
 deepen_factor = 1

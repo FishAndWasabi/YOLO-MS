@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) OpenMMLab. All rights reserved.
+
 import os
 import os.path as osp
 import platform
@@ -181,10 +181,7 @@ if __name__ == '__main__':
         license='GPL License 3.0',
         install_requires=parse_requirements('requirements/runtime.txt'),
         extras_require={
-            'all': parse_requirements('requirements.txt'),
-            # 'tests': parse_requirements('requirements/tests.txt'),
-            # 'build': parse_requirements('requirements/build.txt'),
-            # 'mim': parse_requirements('requirements/mminstall.txt'),
+            'all': parse_requirements('requirements.txt')
         },
         ext_modules=[],
         cmdclass={'build_ext': BuildExtension},
