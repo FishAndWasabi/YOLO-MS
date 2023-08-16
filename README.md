@@ -1,8 +1,11 @@
-## <p align=center> 💪 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection </p>
+## <p align=center> 🚀 YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection </p>
 
-<!-- <center>
-![Python 3.8](https://img.shields.io/badge/python-3.8-g) ![pytorch 1.12.1](https://img.shields.io/badge/pytorch-1.12.0-blue.svg)
-<center/> -->
+<div align="center">
+
+![Python 3.8](https://img.shields.io/badge/python-3.8-g) 
+![pytorch 1.12.1](https://img.shields.io/badge/pytorch-1.12.0-blue.svg)
+
+</div>
 
 This repository contains the official implementation of the following paper:
 
@@ -14,8 +17,6 @@ This repository contains the official implementation of the following paper:
 \[[Paper](https://arxiv.org/abs/2308.05480)]
 \[Poster (TBD)\]
 \[Video (TBD)\]
-
-
 
 <table>
   <tbody>
@@ -31,72 +32,64 @@ This repository contains the official implementation of the following paper:
 </table>
 
 
-- First of all, [:wrench: Dependencies and Installation](#wrench-dependencies-and-installation).
-- For **academic research**, please refer to [pretrained-models.md](docs/pretrained-models.md) and [:robot: Training and Evaluation](#robot-training-and-evaluation).
-- For **further development**, please refer to [:construction: Further Development](#construction-further-development).
-- For **using LED on your own camera**, please refer to [:sparkles: Pretrained Models](#sparkles-pretrained-models) and [:camera: Quick Demo](#camera-quick-demo).
+## 📄 Table of Contents
+
+- [✨ New](#✨-news-)
+- [🛠️ Dependencies and Installation](#🛠️-Dependencies-and-Installation-)
+- [🤖 Training and Evaluation](#🤖-Training-and-Evaluation-)
+- [🏡 Model Zoo](#🏡-Model-Zoo-)
+- [🏗️ Other Task](#🏗️-Other-Task-)
+- [📖 Citation](#📖-Citation-)
+- [📜 License](#📜-License-)
+- [📮 Contact](#📮-Contact-)
+- [🤝 Acknowledgement](#🤝-Acknowledgement-)
 
 
+## ✨ News
+
+> Future work can be found in [todo.md](docs/todo.md).
+
+- **Aug, 2023**: Our code is publicly available!
 
 
-## Get Started
+## 🛠️ Dependencies and Installation
 
-### 1. Dependencies and Installation
+We provide a simple scrpit `install.sh` for installation, or refer to [install.md](docs/install.md) for more details.
 
-- Ubuntu >= 20.04
-- CUDA >= 11.3
-- pytorch==1.12.1
-- torchvision=0.13.1
-
-Our implementation based on MMYOLO==0.5.0. For more information about installation, please see the [official instructions](https://mmyolo.readthedocs.io/en/latest/).
-
-
-**Step 0.** Create Conda Environment
-
-```shell
-conda create --name yolo-ms python=3.8 -y
-conda activate yolo-ms
-```
-
-**Step 1.** Install [Pytorch](https://pytorch.org)
-
-```shell
-conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
-```
-
-**Step 2.** Install [MMEngine](https://github.com/open-mmlab/mmengine), [MMCV](https://github.com/open-mmlab/mmcv), [MMDet](https://github.com/open-mmlab/mmdet) and [MMYOLO](https://github.com/open-mmlab/mmyolo) using [MIM](https://github.com/open-mmlab/mim).
-
-```shell
-pip install -U openmim
-mim install "mmengine==0.7.1"
-mim install "mmcv==2.0.0rc4"
-mim install "mmdet==3.0.0"
-mim install "mmyolo==0.5.0"
-```
-
-**Step 3.** Install YOLO-MS.
+### 1. Clone and enter the repo.
 
 ```shell
 git clone https://github.com/FishAndWasabi/YOLO-MS.git
 cd YOLO-MS
-pip install -v -e .
-# "-v" means verbose, or more output
-# "-e" means installing a project in editable mode,
-# thus any local modifications made to the code will take effect without reinstallation.
 ```
 
-### 2. Training and Evaluation
+### 2. Run `install.sh`.
 
-**Single GPU**
+```shell
+bash install.sh
+```
+
+### 3. Activate your environment!
+
+```shell
+conda activate YOLO-MS
+```
+
+
+## 🤖 Training and Evaluation
+
+### 1. Training
+
+1.1 **Single GPU**
 
 ```shell
 python tools/train.py ${CONFIG_FILE} [optional arguments]
 ```
 
-**Multi GPU**
+1.2 **Multi GPU**
 
 ```shell
-CUDA_VISIBLE_DEVICES=x,x,x,x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
+CUDA_VISIBLE_DEVICES=x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
 ```
 
 ### 3. Evaluation
@@ -105,16 +98,11 @@ CUDA_VISIBLE_DEVICES=x,x,x,x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM
 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 ```
 
-
-### 4. Deployment
-
-TODO
+### 4. Deployment (TBD)
 
 
 
-
-
-## :sparkles: Model Zoo
+## 🏡 Model Zoo
 
 ### YOLOMS
 
@@ -126,7 +114,7 @@ TODO
 
 
 
-## :book: Citation
+## 📖 Citation
 
 If you find our repo useful for your research, please cite us:
 
@@ -156,21 +144,16 @@ This project is based on the open source codebase [MMDetection](https://github.c
 }
 ```
 
-## :scroll: License
+## 📜 License
 
 Licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for Non-commercial use only. Any commercial use should get formal permission first.
 
-## :postbox: Contact
+## 📮 Contact
 
-For technical questions, please contact `chenyuming@mail.nankai.edu.cn` and ``.
+For technical questions, please contact `chenyuming[AT]mail.nankai.edu.cn`.
+For commercial licensing, please contact `cmm[AT]nankai.edu.cn` and `andrewhoux[AT]gmail.com`.
 
-## :handshake: Acknowledgement
+## 🤝 Acknowledgement
 
-This repo is modified from open source object detection codebase [MMDetection](https://github.com/open-mmlab/mmdetection).
-
-
-We also thank all of our contributors.
-
-<a href="https://github.com/Srameo/LED/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Srameo/LED" />
-</a>
+This repo is modified from open source real-time object detection codebase [MMYOLO](https://github.com/open-mmlab/mmyolo).
+The README file is referred to [LED](https://github.com/Srameo/LED) and [CrossKD](https://github.com/jbwang1997/CrossKD)
