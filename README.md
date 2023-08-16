@@ -43,11 +43,6 @@ This repository contains the official implementation of the following paper:
 - [🤖 Training and Evaluation](#-training-and-evaluation)
 - [🏡 Model Zoo](#-model-zoo)
 - [🏗️ Other Task](#️-other-task)
-  - [Instance Segmentation (TBD)](#instance-segmentation-tbd)
-  - [Rotated Object Detection (TBD)](#rotated-object-detection-tbd)
-  - [Object Tracking (TBD)](#object-tracking-tbd)
-  - [Detection in Crowded Scene (TBD)](#detection-in-crowded-scene-tbd)
-  - [Small Object Detection (TBD)](#small-object-detection-tbd)
 - [📖 Citation](#-citation)
 - [📜 License](#-license)
 - [📮 Contact](#-contact)
@@ -86,13 +81,13 @@ This repository contains the official implementation of the following paper:
 
 1. Training
 
-   1.1 **Single GPU**
+   1.1 Single GPU
 
    ```shell
    python tools/train.py ${CONFIG_FILE} [optional arguments]
    ```
 
-   1.2 **Multi GPU**
+   1.2 Multi GPU
 
    ```shell
    CUDA_VISIBLE_DEVICES=x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
@@ -110,7 +105,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 ## 🏡 Model Zoo
 
-1. **YOLOMS**
+1. YOLOMS
 
 <table>
     <thead>
@@ -168,23 +163,23 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 </table>
 
 
-2. **YOLOv6**
+2. YOLOv6
 
 
 
-3. **YOLOv8**
+3. YOLOv8
 
 
-4. **More YOLOs** (TBD)
+4. More YOLOs (TBD)
 
 
 ## 🏗️ Other Task
 
-### Instance Segmentation (TBD)
-### Rotated Object Detection (TBD)
-### Object Tracking (TBD)
-### Detection in Crowded Scene (TBD)
-### Small Object Detection (TBD)
+1. Instance Segmentation (TBD)
+2. Rotated Object Detection (TBD)
+3. Object Tracking (TBD)
+4. Detection in Crowded Scene (TBD)
+5. Small Object Detection (TBD)
 
 
 ## 📖 Citation
