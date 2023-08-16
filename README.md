@@ -34,8 +34,9 @@ This repository contains the official implementation of the following paper:
 </table>
 
 
-<h2>📄 Table of Contents </h2>
+## 📄 Table of Contents
 
+- [📄 Table of Contents](#-table-of-contents)
 - [✨ News 🔝](#-news-)
 - [🛠️ Dependencies and Installation 🔝](#️-dependencies-and-installation-)
 - [🤖 Training and Evaluation 🔝](#-training-and-evaluation-)
