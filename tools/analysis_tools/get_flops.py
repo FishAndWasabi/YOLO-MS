@@ -1,55 +1,5 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import argparse
-# import torch
-# from mmyolo.utils import register_all_modules
-# # from mmcls.utils import register_all_modules as cls_register_all_modules
-# # from mmcls.apis import init_model
-# # from mmdet.
-# # from mmdet.utils import register_all_modules
-# from mmdet.registry import MODELS
-
-# from copy import deepcopy
-# from thop import profile
-# from mmengine.config import Config, DictAction
-
-
-# def model_info(model, verbose=False, img_size=416):
-#     # Model information. img_size may be int or list, i.e. img_size=640 or img_size=[640, 320]
-#     n_p = sum(x.numel() for x in model.parameters())  # number parameters
-#     n_g = sum(x.numel() for x in model.parameters() if x.requires_grad)  # number gradients
-#     if verbose:
-#         print('%5s %40s %9s %12s %20s %10s %10s' % ('layer', 'name', 'gradient', 'parameters', 'shape', 'mu', 'sigma'))
-#         for i, (name, p) in enumerate(model.named_parameters()):
-#             name = name.replace('module_list.', '')
-#             print('%5g %40s %9s %12g %20s %10.3g %10.3g' %
-#                   (i, name, p.requires_grad, p.numel(), list(p.shape), p.mean(), p.std()))
-#     img = torch.zeros((1, 3, img_size, img_size), device=next(model.parameters()).device)
-#     flops = profile(model, inputs=(img,), verbose=False)[0]/1E9
-#     fs = ', %.1f GFLOPS' % (flops)
-#     print(f"Model Summary: {len(list(model.modules()))} layers, {n_p} parameters, {n_g} gradients{fs}")
-
-# def parse_args():
-#     parser = argparse.ArgumentParser(description='Train a detector')
-#     parser.add_argument('config', help='train config file path')
-#     args = parser.parse_args()
-#     return args
-
-# def main():
-
-#     args = parse_args()
-#     # cls_register_all_modules()
-#     register_all_modules()
-    
-
-#     # model = init_model(args.config)
-#     cfg = Config.fromfile(args.config)
-#     # if args.cfg_options is not None:
-#         # cfg.merge_from_dict(args.cfg_options)
-#     model = MODELS.build(cfg.model)
-#     model.eval()
-
-#     model_info(model, True, img_size=320)
-    
 import tempfile
 from pathlib import Path
 
