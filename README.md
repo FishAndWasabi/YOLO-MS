@@ -47,13 +47,13 @@ This repository contains the official implementation of the following paper:
 - [📮 Contact 🔝](#-contact-)
 - [🤝 Acknowledgement 🔝](#-acknowledgement-)
 
-## ✨ News [🔝](#📄-table-of-contents-)
+## ✨ News [🔝](#-table-of-contents)
 
 > Future work can be found in [todo.md](docs/todo.md).
 
 - **Aug, 2023**: Our code is publicly available!
 
-## 🛠️ Dependencies and Installation [🔝](#📄-table-of-contents-)
+## 🛠️ Dependencies and Installation [🔝](#-table-of-contents)
 
 > We provide a simple scrpit `install.sh` for installation, or refer to [install.md](docs/install.md) for more details.
 
@@ -76,7 +76,7 @@ This repository contains the official implementation of the following paper:
    conda activate YOLO-MS
    ```
 
-## 🤖 Training and Evaluation [🔝](#📄-table-of-contents-)
+## 🤖 Training and Evaluation [🔝](#-table-of-contents)
 
 1. Training
 
@@ -100,7 +100,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 3. Deployment (TBD)
 
-## 🏡 Model Zoo [🔝](#📄-table-of-contents-)
+## 🏡 Model Zoo [🔝](#-table-of-contents)
 
 - [ ] YOLOv5-MS
 - [ ] YOLOX-MS
@@ -377,7 +377,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 </details>
 
-## 🏗️ Supported Tasks [🔝](#📄-table-of-contents-)
+## 🏗️ Supported Tasks [🔝](#-table-of-contents)
 
 - [x] Object Detection
 - [ ] Instance Segmentation (TBD)
@@ -386,7 +386,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 - [ ] Detection in Crowded Scene (TBD)
 - [ ] Small Object Detection (TBD)
 
-## 📖 Citation [🔝](#📄-table-of-contents-)
+## 📖 Citation [🔝](#-table-of-contents)
 
 If you find our repo useful for your research, please cite us:
 
@@ -412,16 +412,16 @@ This project is based on the open source codebase [MMYOLO](https://github.com/op
 }
 ```
 
-## 📜 License [🔝](#📄-table-of-contents-)
+## 📜 License [🔝](#-table-of-contents)
 
 Licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for Non-commercial use only. Any commercial use should get formal permission first.
 
-## 📮 Contact [🔝](#📄-table-of-contents-)
+## 📮 Contact [🔝](#-table-of-contents)
 
 For technical questions, please contact `chenyuming[AT]mail.nankai.edu.cn`.
 For commercial licensing, please contact `cmm[AT]nankai.edu.cn` and `andrewhoux[AT]gmail.com`.
 
-## 🤝 Acknowledgement [🔝](#📄-table-of-contents-)
+## 🤝 Acknowledgement [🔝](#-table-of-contents)
 
 This repo is modified from open source real-time object detection codebase [MMYOLO](https://github.com/open-mmlab/mmyolo).
 The README file is referred to [LED](https://github.com/Srameo/LED) and [CrossKD](https://github.com/jbwang1997/CrossKD)
