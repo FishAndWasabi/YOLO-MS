@@ -208,19 +208,12 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yoloms/yoloms-se_syncbn_fast_8xb8-300e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1Gf5g7Jssu88wZpPQDwNiqMIEkK4MpsdM/view?usp=drive_link">model</a>] </td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td> L </td>
         <td> 640 </td>
         <td> 300 </td>
         <td colspan="8" > TBD </td>
-        <!-- <td>  </td>
-        <td>  </td>
-        <td>  </td>
-        <td>  </td>
-        <td>  </td>
-        <td>  </td>
-        <td>  </td> -->
-    </tr>
+    </tr> -->
     </tbody>
 </table>
 
@@ -229,7 +222,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 </details>
 
 <details>
-<summary><b>2. YOLOv6-MS</b></summary>
+<summary><b>2. YOLOv6</b></summary>
 
 <table>
     <thead align="center">
@@ -249,24 +242,25 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
     </thead>
     <tbody align="center">
     <tr>
-        <td style="width: 300pt"> n </td>
-        <td> 640 </td>
-        <td> - </td>
-        <td colspan="8" > TBD </td>
-    </tr>
-    <!-- <tr>
-        <td style="width: 300pt"> n </td>
+        <td style="width: 300pt"> t </td>
         <td> 640 </td>
         <td> 400 </td>
-        <td colspan="8" > TBD </td>
-    </tr> -->
+        <td> 9.7 </td>
+        <td> 12.4 </td>
+        <td> 41.0 </td>
+        <td> 21.2 </td>
+        <td> 45.7 </td>
+        <td> 57.7 </td>
+        <td> [<a href="https://github.com/open-mmlab/mmyolo/blob/main/configs/yolov6/yolov6_t_syncbn_fast_8xb32-400e_coco.py">config</a>]  </td>
+        <td> [<a href="https://download.openmmlab.com/mmyolo/v0/yolov6/yolov6_t_syncbn_fast_8xb32-400e_coco/yolov6_t_syncbn_fast_8xb32-400e_coco_20221030_143755-cf0d278f.pth">model</a>] </td>
+    </tr>
     <tr>
-        <td style="width: 300pt"> t </td>
+        <td style="width: 300pt"> t-MS </td>
         <td> 640 </td>
         <td> 400 </td>
         <td> 8.1 </td>
         <td> 9.6 </td>
-        <td> 43.5 </td>
+        <td> 43.5 (+2.5) </td>
         <td> 26.0 </td>
         <td> 48.3 </td>
         <td> 57.8 </td>
@@ -274,49 +268,13 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <!-- <td> [<a href="">model</a>] </td> -->
         <td> [model] (TBD) </td>
     </tr>
-    <tr>
-        <td style="width: 300pt"> s </td>
-        <td> 640 </td>
-        <td> - </td>
-        <td colspan="8" > TBD </td>
-    </tr>
-    <!-- <tr>
-        <td style="width: 300pt"> s </td>
-        <td> 640 </td>
-        <td> 400 </td>
-        <td colspan="8" > TBD </td>
-    </tr> -->
-    <tr>
-        <td style="width: 300pt"> m </td>
-        <td> 640 </td>
-        <td> - </td>
-        <td colspan="8" > TBD </td>
-    </tr>
-    <!-- <tr>
-        <td style="width: 300pt"> m </td>
-        <td> 640 </td>
-        <td> 400 </td>
-        <td colspan="8" > TBD </td>
-    </tr> -->
-    <tr>
-        <td style="width: 300pt"> l </td>
-        <td> 640 </td>
-        <td> - </td>
-        <td colspan="8" > TBD </td>
-    </tr>
-    <!-- <tr>
-        <td style="width: 300pt"> l </td>
-        <td> 640 </td>
-        <td> 400 </td>
-        <td colspan="8" > TBD </td>
-    </tr> -->
     </tbody>
 </table>
 
 </details>
 
 <details>
-<summary><b>3. YOLOv8-MS</b></summary>
+<summary><b>3. YOLOv8</b></summary>
 
 <table>
     <thead align="center">
@@ -341,14 +299,27 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 500 </td>
         <td> 2.9 </td>
         <td> 4.4 </td>
-        <td> 56.3 </td>
+        <td> 37.2 </td>
+        <td> 18.9 </td>
+        <td> 40.5 </td>
+        <td> 52.5 </td>
+        <td> [<a href="https://github.com/open-mmlab/mmyolo/blob/main/configs/yolov8/yolov8_n_syncbn_fast_8xb16-500e_coco.py">config</a>]  </td>
+        <td> [<a href="https://download.openmmlab.com/mmyolo/v0/yolov8/yolov8_n_syncbn_fast_8xb16-500e_coco/yolov8_n_syncbn_fast_8xb16-500e_coco_20230114_131804-88c11cdb.pth">model</a>] </td>
+    </tr>
+    <tr>
+        <td style="width: 300pt"> n-MS </td>
+        <td> 640 </td>
+        <td> 500 </td>
+        <td> 2.9 </td>
+        <td> 4.4 </td>
+        <td> 40.3 (+3.1) </td>
         <td> 22.0 </td>
         <td> 44.6 </td>
         <td> 53.7 </td>
         <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yolomsv8/yolov8-ms_n_syncbn_fast_8xb16-500e_coco.py">config</a>]  </td>
         <td> [<a href="https://drive.google.com/file/d/1ssePhnZ4UQSRJk_NvweiQPA5llRFVlpw/view?usp=drive_link">model</a>] </td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td style="width: 300pt"> s </td>
         <td> 640 </td>
         <td> 500 </td>
@@ -371,7 +342,7 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
         <td> 640 </td>
         <td> 500 </td>
         <td colspan="8" > TBD </td>
-    </tr>
+    </tr> -->
     </tbody>
 </table>
 
