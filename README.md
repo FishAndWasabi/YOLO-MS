@@ -98,7 +98,18 @@ This repository contains the official implementation of the following paper:
 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 ```
 
-3. Deployment (TBD)
+3. Deployment 
+
+```shell
+docker build docker/GPU/ -t mmdeploy:inside --build-arg USE_SRC_INSIDE=true 
+mkdir test_fps
+docker run -v test_fps:/root/workspace/test  --gpus all --name mmdeploy_yoloms  -it mmdeploy:inside
+cd test
+docker cp deploy_model.sh mmdeploy_yxb:/root/worksapce/test
+docker cp yoloms_l_syncbn_fast_8xb32-300e_coco.py  mmdeploy_yxb:/root/worksapce/test
+docker cp yoloms_l_syncbn_fast_8xb32-300e_coco.pth mmdeploy_yxb:/root/worksapce/test
+sh deploy_model.sh mmdeploy/configs/mmdet/detection/detection_tensorrt-fp16_static-640x640.py \ yoloms_l_syncbn_fast_8xb32-300e_coco.py  yoloms_l_syncbn_fast_8xb32-300e_coco.pth yoloms
+```
 
 ## 🏡 Model Zoo [🔝](#-table-of-contents)
 
