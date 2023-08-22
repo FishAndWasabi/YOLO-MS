@@ -102,11 +102,35 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
 ```shell
 docker build docker/GPU/ -t mmdeploy:inside --build-arg USE_SRC_INSIDE=true
-docker run --gpus all --name mmdeploy_yoloms  -it mmdeploy:inside
+docker run --gpus all --name mmdeploy_yoloms -it mmdeploy:inside
+# In Docker
 docker cp deploy.sh mmdeploy_yoloms:/root/worksapce
 docker cp ${CONFIG_FILE}  mmdeploy_yoloms:/root/worksapce
 docker cp ${CHECKPOINT_FILE} mmdeploy_yoloms:/root/worksapce
-sh deploy_model.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${CHECKPOINT_FILE} ${WORK_DIR}
+sh deploy_model.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${CHECKPOINT_FILE} ${SAVE_DIR}
+docker cp mmdeploy_yoloms:/root/worksapce/${SAVE_DIR} ${SAVE_DIR}
+```
+
+4. Test FPS
+
+   4.1 Deployed Model
+
+   ```shell
+   docker run --gpus all --name mmdeploy_yoloms  -it mmdeploy:inside
+   # In Docker
+   sh deploy_model.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${SAVE_DIR}
+   ```
+
+   4.2 Undeployed Model
+
+   ```shell
+   python tools/analysis_tools/benchmark.py ${CONFIG_FILE} --checkpoint ${CHECKPOINT_FILE} [optional arguments]
+   ```
+
+5. Test FLOPs and Params
+
+```shell
+python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optional arguments]
 ```
 
 ## 🏡 Model Zoo [🔝](#-table-of-contents)
