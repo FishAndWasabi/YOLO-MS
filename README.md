@@ -101,24 +101,43 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 3. Deployment
 
 ```shell
-docker build docker/GPU/ -t mmdeploy:inside --build-arg USE_SRC_INSIDE=true
-docker run --gpus all --name mmdeploy_yoloms -it mmdeploy:inside
-# In Docker
-docker cp deploy.sh mmdeploy_yoloms:/root/worksapce
-docker cp ${CONFIG_FILE}  mmdeploy_yoloms:/root/worksapce
-docker cp ${CHECKPOINT_FILE} mmdeploy_yoloms:/root/worksapce
-sh deploy_model.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${CHECKPOINT_FILE} ${SAVE_DIR}
-docker cp mmdeploy_yoloms:/root/worksapce/${SAVE_DIR} ${SAVE_DIR}
+# Build docker images
+docker build docker/mmdeploy/ -t mmdeploy:inside --build-arg USE_SRC_INSIDE=true
+# Run docker container
+docker run --gpus all --name mmdeploy_yoloms -dit mmdeploy:inside
+# Convert ${CONFIG_FILE}
+python tools/misc/print_config.py ${O_CONFIG_FILE} --save-path ${CONFIG_FILE}
+# Copy local file into docker container
+docker cp deploy.sh mmdeploy_yoloms:/root/workspace
+docker cp ${DEPLOY_CONFIG_FILE}  mmdeploy_yoloms:/root/workspace/${DEPLOY_CONFIG_FILE}
+docker cp ${CONFIG_FILE} mmdeploy_yoloms:/root/workspace/${CONFIG_FILE}
+docker cp ${CHECKPOINT_FILE} mmdeploy_yoloms:/root/workspace/${CHECKPOINT_FILE}
+# Attach docker container
+docker attach mmdeploy_yoloms
+# Run the deployment shell
+sh deploy.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${CHECKPOINT_FILE} ${SAVE_DIR}
+# Copy the results to local
+docker cp mmdeploy_yoloms:/root/workspace/${SAVE_DIR} ${SAVE_DIR}
 ```
 
-4. Test FPS
+- **DEPLOY_CONFIG_FILE**: Config file for deployment.
+- **O_CONFIG_FILE**: Original config file of model.
+- **CONFIG_FILE**: Converted config file of model.
+- **CHECKPOINT_FILE**: Checkpoint of model.
+- **SAVE_DIR**: Save dir.
+
+1. Test FPS
 
    4.1 Deployed Model
 
    ```shell
-   docker run --gpus all --name mmdeploy_yoloms  -it mmdeploy:inside
-   # In Docker
-   sh deploy_model.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${SAVE_DIR}
+   # Attach docker container
+   docker attach mmdeploy_yoloms
+   # In docker container
+   # Copy local file into docker container
+   docker cp deploy.sh mmdeploy_yoloms:/root/worksapce
+   # Run the FPS shell
+   sh fps.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${SAVE_DIR}
    ```
 
    4.2 Undeployed Model
@@ -127,7 +146,7 @@ docker cp mmdeploy_yoloms:/root/worksapce/${SAVE_DIR} ${SAVE_DIR}
    python tools/analysis_tools/benchmark.py ${CONFIG_FILE} --checkpoint ${CHECKPOINT_FILE} [optional arguments]
    ```
 
-5. Test FLOPs and Params
+2. Test FLOPs and Params
 
 ```shell
 python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optional arguments]
