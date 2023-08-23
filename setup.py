@@ -6,8 +6,8 @@ import platform
 import shutil
 import sys
 import warnings
-from setuptools import find_packages, setup
 
+from setuptools import find_packages, setup
 from torch.utils.cpp_extension import BuildExtension
 
 
@@ -160,11 +160,11 @@ if __name__ == '__main__':
     setup(
         name='yoloms',
         version=get_version(),
-        description='OpenMMLab Toolbox of YOLOMS',
+        description='YOLOMS',
         long_description=readme(),
         long_description_content_type='text/markdown',
-        author='MMYOLO Contributors',
-        author_email='openmmlab@gmail.com',
+        author='chenyuming',
+        author_email='chenyuming@mail.nankai.edu.cn',
         keywords='computer vision, object detection',
         url='https://github.com/open-mmlab/mmyolo',
         packages=find_packages(exclude=('configs', 'tools')),
@@ -178,11 +178,8 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: 3.9',
         ],
-        license='GPL License 3.0',
-        install_requires=parse_requirements('requirements/runtime.txt'),
-        extras_require={
-            'all': parse_requirements('requirements.txt')
-        },
+        license='Creative Commons Attribution-NonCommercial 4.0 International',
+        install_requires=parse_requirements('requirements.txt'),
         ext_modules=[],
         cmdclass={'build_ext': BuildExtension},
         zip_safe=False)
