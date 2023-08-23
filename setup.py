@@ -166,7 +166,7 @@ if __name__ == '__main__':
         author='chenyuming',
         author_email='chenyuming@mail.nankai.edu.cn',
         keywords='computer vision, object detection',
-        url='https://github.com/open-mmlab/mmyolo',
+        url='https://github.com/fishandwasabi/yolo-ms',
         packages=find_packages(exclude=('configs', 'tools')),
         include_package_data=True,
         classifiers=[
