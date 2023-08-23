@@ -298,8 +298,7 @@ python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optiona
         <td> 48.3 </td>
         <td> 57.8 </td>
         <td> [<a href="https://github.com/FishAndWasabi/YOLO-MS/tree/main/configs/yolomsv6/yolov6-ms_t_syncbn_fast_8xb32-400e_coco.py">config</a>]  </td>
-        <!-- <td> [<a href="">model</a>] </td> -->
-        <td> [model] (TBD) </td>
+        <td> [<a href="https://drive.google.com/file/d/1rRBuojakbnEJqFWz5KKsMbg6V4j__BP6/view?usp=drive_link">model</a>] </td>
     </tr>
     </tbody>
 </table>
