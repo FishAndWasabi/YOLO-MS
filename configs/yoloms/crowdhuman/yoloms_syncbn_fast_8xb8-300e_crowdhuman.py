@@ -1,4 +1,4 @@
-_base_ = ['../yoloms_rtmdet_tiny_syncbn_fast_8xb8-300e_coco.py']
+_base_ = ['../yoloms-s_syncbn_fast_8xb8-300e_coco.py']
 
 # dataset settings
 data_root = 'data/CrowdHuman/'
