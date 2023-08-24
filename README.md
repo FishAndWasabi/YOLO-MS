@@ -18,6 +18,7 @@ This repository contains the official implementation of the following paper:
 \[[Paper](https://arxiv.org/abs/2308.05480)\]
 \[知乎 (TBD)\]
 \[[AIWalker](https://mp.weixin.qq.com/s/FfG9vNM_a2k_zflWfuimsw)\]
+\[[极市平台](https://mp.weixin.qq.com/s/khi23R14olhv4oR1gm82XA)\]
 \[Poster (TBD)\]
 \[Video (TBD)\]
 
@@ -162,7 +163,7 @@ python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optiona
 - [x] [YOLOv8-MS](configs/yolov8_ms)
 - [x] [YOLO-MS (Based on RTMDet)](configs/yoloms)
 
-<details>
+<details open>
 <summary><b>1. YOLO-MS</b></summary>
 
 <table>
@@ -273,7 +274,7 @@ python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optiona
 
 </details>
 
-<details>
+<details open>
 <summary><b>2. YOLOv6</b></summary>
 
 <table>
@@ -324,7 +325,7 @@ python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optiona
 
 </details>
 
-<details>
+<details open>
 <summary><b>3. YOLOv8</b></summary>
 
 <table>
