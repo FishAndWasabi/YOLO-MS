@@ -40,6 +40,7 @@ This repository contains the official implementation of the following paper:
 - [📄 Table of Contents](#-table-of-contents)
 - [✨ News 🔝](#-news-)
 - [🛠️ Dependencies and Installation 🔝](#️-dependencies-and-installation-)
+- [👼 Quick Demo 🔝](#-quick-demo-)
 - [🤖 Training and Evaluation 🔝](#-training-and-evaluation-)
 - [🏡 Model Zoo 🔝](#-model-zoo-)
 - [🏗️ Supported Tasks 🔝](#️-supported-tasks-)
@@ -77,7 +78,7 @@ This repository contains the official implementation of the following paper:
    conda activate YOLO-MS
    ```
 
-## 🤖 Quick Demo [🔝](#-table-of-contents)
+## 👼 Quick Demo [🔝](#-table-of-contents)
 
 ```shell
 python demo/image_demo.py ${IMAGE_PATH} ${CONFIG_FILE} ${CHECKPOINT_FILE} [optional arguments]
