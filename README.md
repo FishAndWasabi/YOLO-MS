@@ -77,6 +77,52 @@ This repository contains the official implementation of the following paper:
    conda activate YOLO-MS
    ```
 
+## 🤖 Quick Demo [🔝](#-table-of-contents)
+
+```shell
+python demo/image_demo.py ${IMAGE_PATH} ${CONFIG_FILE} ${CHECKPOINT_FILE} [optional arguments]
+```
+
+You could run `python demo/image_demo.py --help` to get detailed information of this scripts.
+
+<details>
+<summary> Detailed arguments </summary>
+
+```
+positional arguments:
+  img                   Image path, include image file, dir and URL.
+  config                Config file
+  checkpoint            Checkpoint file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --out-dir OUT_DIR     Path to output file
+  --device DEVICE       Device used for inference
+  --show                Show the detection results
+  --deploy              Switch model to deployment mode
+  --tta                 Whether to use test time augmentation
+  --score-thr SCORE_THR
+                        Bbox score threshold
+  --class-name CLASS_NAME [CLASS_NAME ...]
+                        Only Save those classes if set
+  --to-labelme          Output labelme style label file
+```
+
+</details>
+
+<table>
+  <tbody>
+    <tr>
+        <td>
+            <img src='demo/demo.jpg' alt='DEMO' width='500px'/>
+        </td>
+        <td>
+            <img src='asserts/demo_output.jpg' alt='DEMO_OUTPUT' width='500px'/>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 ## 🤖 Training and Evaluation [🔝](#-table-of-contents)
 
 1. Training
@@ -93,11 +139,75 @@ This repository contains the official implementation of the following paper:
    CUDA_VISIBLE_DEVICES=x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
    ```
 
+   You could run `python tools/train.py --help` to get detailed information of this scripts.
+
+   <details>
+    <summary> Detailed arguments </summary>
+
+   ```
+   positional arguments:
+   config                train config file path
+
+   optional arguments:
+   -h, --help            show this help message and exit
+   --work-dir WORK_DIR   the dir to save logs and models
+   --amp                 enable automatic-mixed-precision training
+   --resume [RESUME]     If specify checkpoint path, resume from it, while if not specify, try to auto resume from the latest checkpoint in the work directory.
+   --cfg-options CFG_OPTIONS [CFG_OPTIONS ...]
+                           override some settings in the used config, the key-value pair in xxx=yyy format will be merged into config file. If the value to be overwritten is a list, it should be like key="[a,b]" or key=a,b It also allows nested
+                           list/tuple values, e.g. key="[(a,b),(c,d)]" Note that the quotation marks are necessary and that no white space is allowed.
+   --launcher {none,pytorch,slurm,mpi}
+                           job launcher
+   --local_rank LOCAL_RANK
+   ```
+
+   </details>
+
 2. Evaluation
 
-```shell
-python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
-```
+   1.1 Single GPU
+
+   ```shell
+   python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [optional arguments]
+   ```
+
+   1.2 Multi GPU
+
+   ```shell
+   CUDA_VISIBLE_DEVICES=x python tools/dist_test.sh ${CONFIG_FILE} ${CHECKPOINT_FILE} ${GPU_NUM} [optional arguments]
+   ```
+
+   You could run `python tools/test.py --help` to get detailed information of this scripts.
+
+   <details>
+    <summary> Detailed arguments </summary>
+
+   ```
+   positional arguments:
+   config                test config file path
+   checkpoint            checkpoint file
+
+   optional arguments:
+   -h, --help            show this help message and exit
+   --work-dir WORK_DIR   the directory to save the file containing evaluation metrics
+   --out OUT             output result file (must be a .pkl file) in pickle format
+   --json-prefix JSON_PREFIX
+                           the prefix of the output json file without perform evaluation, which is useful when you want to format the result to a specific format and submit it to the test server
+   --tta                 Whether to use test time augmentation
+   --show                show prediction results
+   --deploy              Switch model to deployment mode
+   --show-dir SHOW_DIR   directory where painted images will be saved. If specified, it will be automatically saved to the work_dir/timestamp/show_dir
+   --wait-time WAIT_TIME
+                           the interval of show (s)
+   --cfg-options CFG_OPTIONS [CFG_OPTIONS ...]
+                           override some settings in the used config, the key-value pair in xxx=yyy format will be merged into config file. If the value to be overwritten is a list, it should be like key="[a,b]" or key=a,b It also allows nested
+                           list/tuple values, e.g. key="[(a,b),(c,d)]" Note that the quotation marks are necessary and that no white space is allowed.
+   --launcher {none,pytorch,slurm,mpi}
+                           job launcher
+   --local_rank LOCAL_RANK
+   ```
+
+   </details>
 
 3. Deployment
 
