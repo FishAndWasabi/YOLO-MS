@@ -81,7 +81,10 @@ model = dict(
               act_cfg=act_cfg),
     bbox_head=dict(
         head_module=dict(widen_factor=widen_factor,
-                         in_channels=[320, 640, last_stage_out_channels])))
+                         num_classes=num_classes,
+                         in_channels=[320, 640, last_stage_out_channels])),
+    train_cfg=dict(assigner=dict(num_classes=num_classes)),
+)
 
 train_dataloader = dict(batch_size=train_batch_size_per_gpu,
                         num_workers=train_num_workers,

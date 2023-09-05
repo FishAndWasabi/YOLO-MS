@@ -90,35 +90,47 @@ model = dict(backbone=dict(_delete_=True,
              bbox_head=dict(head_module=dict(widen_factor=widen_factor,
                                              in_channels=out_channels,
                                              feat_channels=out_channels,
+                                             num_classes=num_classes,
                                              act_cfg=dict(inplace=True,
                                                           type='LeakyReLU')),
                             loss_bbox=dict(type='mmdet.DIoULoss',
-                                           loss_weight=loss_bbox_weight)))
+                                           loss_weight=loss_bbox_weight)),
+             train_cfg=dict(assigner=dict(num_classes=num_classes)))
 
-train_dataloader = dict(batch_size=train_batch_size_per_gpu,
-                        num_workers=train_num_workers,
-                        persistent_workers=persistent_workers,
-                        pin_memory=True,
-                        collate_fn=dict(_delete_=True, type='yolov5_collate'),
-                        sampler=dict(_delete_=True,
-                                     type='DefaultSampler',
-                                     shuffle=True),
-                        dataset=dict(data_root=data_root,
-                                     ann_file=train_ann_file,
-                                     data_prefix=dict(img=train_data_prefix)))
+# according to the label information of class_with_id.txt, set the class_name
+# class_name = ('cat', )
+# num_classes = len(class_name)
+# metainfo = dict(
+#     classes=class_name,
+#     palette=[(220, 20, 60)]  # the color of drawing, free to set
+# )
 
-val_dataloader = dict(batch_size=val_batch_size_per_gpu,
-                      num_workers=val_num_workers,
-                      persistent_workers=persistent_workers,
-                      pin_memory=True,
-                      drop_last=False,
-                      sampler=dict(_delete_=True,
-                                   type='DefaultSampler',
-                                   shuffle=False),
-                      dataset=dict(data_root=data_root,
-                                   ann_file=val_ann_file,
-                                   data_prefix=dict(img=val_data_prefix),
-                                   test_mode=True))
+train_dataloader = dict(
+    batch_size=train_batch_size_per_gpu,
+    num_workers=train_num_workers,
+    persistent_workers=persistent_workers,
+    pin_memory=True,
+    collate_fn=dict(_delete_=True, type='yolov5_collate'),
+    sampler=dict(_delete_=True, type='DefaultSampler', shuffle=True),
+    dataset=dict(
+        data_root=data_root,
+        # metainfo=metainfo,
+        ann_file=train_ann_file,
+        data_prefix=dict(img=train_data_prefix)))
+
+val_dataloader = dict(
+    batch_size=val_batch_size_per_gpu,
+    num_workers=val_num_workers,
+    persistent_workers=persistent_workers,
+    pin_memory=True,
+    drop_last=False,
+    sampler=dict(_delete_=True, type='DefaultSampler', shuffle=False),
+    dataset=dict(
+        data_root=data_root,
+        ann_file=val_ann_file,
+        # metainfo=metainfo,
+        data_prefix=dict(img=val_data_prefix),
+        test_mode=True))
 
 test_dataloader = val_dataloader
 
