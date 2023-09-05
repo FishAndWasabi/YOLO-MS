@@ -137,7 +137,7 @@ optional arguments:
    1.2 Multi GPU
 
    ```shell
-   CUDA_VISIBLE_DEVICES=x python tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
+   CUDA_VISIBLE_DEVICES=x bash tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
    ```
 
    You could run `python tools/train.py --help` to get detailed information of this scripts.
@@ -175,7 +175,7 @@ optional arguments:
    1.2 Multi GPU
 
    ```shell
-   CUDA_VISIBLE_DEVICES=x python tools/dist_test.sh ${CONFIG_FILE} ${CHECKPOINT_FILE} ${GPU_NUM} [optional arguments]
+   CUDA_VISIBLE_DEVICES=x bash tools/dist_test.sh ${CONFIG_FILE} ${CHECKPOINT_FILE} ${GPU_NUM} [optional arguments]
    ```
 
    You could run `python tools/test.py --help` to get detailed information of this scripts.
