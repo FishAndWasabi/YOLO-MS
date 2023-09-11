@@ -121,3 +121,4 @@ RUN cd /root/workspace/mmdeploy &&\
     if [ -z ${VERSION} ] ; then echo "Built MMDeploy for GPU devices successfully!" ; else echo "Built MMDeploy version v${VERSION} for GPU devices successfully!" ; fi
 
 ENV LD_LIBRARY_PATH="/root/workspace/mmdeploy/build/lib:${BACKUP_LD_LIBRARY_PATH}"
+RUN LD_LIBRARY_PATH="/root/workspace/onnxruntime-linux-x64-1.8.1/lib:$LD_LIBRARY_PATH"

@@ -17,8 +17,7 @@ This repository contains the official implementation of the following paper:
 \[Homepage (TBD)\]
 \[[Paper](https://arxiv.org/abs/2308.05480)\]
 \[知乎 (TBD)\]
-\[[AIWalker](https://mp.weixin.qq.com/s/FfG9vNM_a2k_zflWfuimsw)\]
-\[[极市平台](https://mp.weixin.qq.com/s/khi23R14olhv4oR1gm82XA)\]
+\[[集智书童](https://mp.weixin.qq.com/s/3oXJ1jFj19XHwy6pgPTXHQ)\]
 \[Poster (TBD)\]
 \[Video (TBD)\]
 
@@ -219,13 +218,18 @@ docker build docker/mmdeploy/ -t mmdeploy:inside --build-arg USE_SRC_INSIDE=true
 docker run --gpus all --name mmdeploy_yoloms -dit mmdeploy:inside
 # Convert ${CONFIG_FILE}
 python tools/misc/print_config.py ${O_CONFIG_FILE} --save-path ${CONFIG_FILE}
+
 # Copy local file into docker container
 docker cp deploy.sh mmdeploy_yoloms:/root/workspace
 docker cp ${DEPLOY_CONFIG_FILE}  mmdeploy_yoloms:/root/workspace/${DEPLOY_CONFIG_FILE}
 docker cp ${CONFIG_FILE} mmdeploy_yoloms:/root/workspace/${CONFIG_FILE}
 docker cp ${CHECKPOINT_FILE} mmdeploy_yoloms:/root/workspace/${CHECKPOINT_FILE}
+
+# Start docker container
+docker start mmdeploy_yoloms
 # Attach docker container
 docker attach mmdeploy_yoloms
+
 # Run the deployment shell
 sh deploy.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${CHECKPOINT_FILE} ${SAVE_DIR}
 # Copy the results to local
@@ -243,13 +247,20 @@ docker cp mmdeploy_yoloms:/root/workspace/${SAVE_DIR} ${SAVE_DIR}
    4.1 Deployed Model
 
    ```shell
+   # Copy local file into docker container
+   docker cp ${DATA_DIR} mmdeploy_yoloms:/root/workspace/${DATA_DIR}
+   docker cp fps.sh mmdeploy_yoloms:/root/workspace
+   # Start docker container
+   docker start mmdeploy_yoloms
    # Attach docker container
    docker attach mmdeploy_yoloms
    # In docker container
-   # Copy local file into docker container
-   docker cp deploy.sh mmdeploy_yoloms:/root/worksapce
    # Run the FPS shell
-   sh fps.sh ${DEPLOY_CONFIG_FILE} ${CONFIG_FILE} ${SAVE_DIR}
+   python mmdeploy/tools/profiler.py ${DEPLOY_CONFIG_FILE} \
+                                     ${CONFIG_FILE} \
+                                     ${DATASET} \
+                                     --model ${PROFILER_MODEL} \
+                                     --device ${DEVICE}
    ```
 
    4.2 Undeployed Model
