@@ -81,6 +81,9 @@ This repository contains the official implementation of the following paper:
 
 ```shell
 python demo/image_demo.py ${IMAGE_PATH} ${CONFIG_FILE} ${CHECKPOINT_FILE} [optional arguments]
+
+# for sam output
+python demo/sam_demo.py ${IMAGE_PATH} ${CONFIG_FILE} ${CHECKPOINT_FILE} --sam_size ${SAM_MODEL_SIZE} --sam_model ${SAM_MODEL_PATH}
 ```
 
 You could run `python demo/image_demo.py --help` to get detailed information of this scripts.
@@ -106,6 +109,9 @@ optional arguments:
   --class-name CLASS_NAME [CLASS_NAME ...]
                         Only Save those classes if set
   --to-labelme          Output labelme style label file
+  
+  --sam_size            Default: vit_h, Optional: vit_l, vit_b
+  --sam_model           Path of the sam model checkpoint
 ```
 
 </details>
@@ -118,6 +124,14 @@ optional arguments:
         </td>
         <td>
             <img src='asserts/demo_output.jpg' alt='DEMO_OUTPUT' width='500px'/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src='demo/demo.jpg' alt='DEMO' width='500px'/>
+        </td>
+        <td>
+            <img src='asserts/demo_sam.jpg' alt='DEMO_SAM_OUTPUT' width='500px'/>
         </td>
     </tr>
     </tbody>
