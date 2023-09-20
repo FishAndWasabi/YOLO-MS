@@ -59,7 +59,7 @@ def parse_args():
                         required=True)
     parser.add_argument('--sam_size',
                         help='The size of SAM model',
-                        default='vit-h')
+                        default='vit_h')
     args = parser.parse_args()
     return args
 
@@ -146,6 +146,15 @@ def main():
             filename = os.path.basename(file)
         out_file = None if args.show else os.path.join(args.out_dir, filename)
 
+        visualizer.add_datasample(filename,
+                                  img,
+                                  data_sample=result,
+                                  draw_gt=False,
+                                  show=args.show,
+                                  wait_time=0,
+                                  out_file=out_file,
+                                  pred_score_thr=args.score_thr)
+
         progress_bar.update()
 
         # Get candidate predict info with score threshold
@@ -156,7 +165,8 @@ def main():
         
         # sam
         image = cv2.imread(file, cv2.IMREAD_COLOR)
-        sam = models.segment_anything.sam_model_registry[args.sam_size](checkpoint=args.sam_model).to(device=torch.device('cuda:0'))
+        image_processed = cv2.imread(out_file, cv2.IMREAD_COLOR)
+        sam = models.segment_anything.sam_model_registry[args.sam_size](checkpoint=args.sam_model).to(device=torch.device(args.device))
         mask_predictor = models.segment_anything.SamPredictor(sam)
         transformed_boxes = mask_predictor.transform.apply_boxes_torch(bboxes, image.shape[:2])
         mask_predictor.set_image(image)
@@ -176,7 +186,7 @@ def main():
             mask = np.stack([mask] + [mask_map * 255] * 2, axis=-1).astype(np.uint8)
             mask = cv2.cvtColor(mask, cv2.COLOR_HSV2BGR)
             if result is None:
-                result = cv2.addWeighted(image, 1, mask, 0.5, 0)
+                result = cv2.addWeighted(image_processed, 1, mask, 0.5, 0)
             else:
                 result = cv2.addWeighted(result, 1, mask, 0.5, 0)
         
