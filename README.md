@@ -11,7 +11,7 @@
 This repository contains the official implementation of the following paper:
 
 > **YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection**<br/>
-> [Yuming Chen](http://www.fishworld.site/), [Xinbin Yuan](https://github.com/YXB-NKU), [Ruiqi Wu](https://rq-wu.github.io/), [Jiabao Wang](https://mmcheng.net/wjb/), [Qibin Hou](https://houqb.github.io/), [Ming-ming Cheng](https://mmcheng.net)<br/>
+> [Yuming Chen](http://www.fishworld.site/), [Xinbin Yuan](https://github.com/YXB-NKU), [Ruiqi Wu](https://rq-wu.github.io/), [Jiabao Wang](https://mmcheng.net/wjb/), [Qibin Hou](https://houqb.github.io/), [Ming-Ming Cheng](https://mmcheng.net)<br/>
 > Under review
 
 \[Homepage (TBD)\]
