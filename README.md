@@ -134,6 +134,14 @@ optional arguments:
             <img src='asserts/demo_sam.jpg' alt='DEMO_SAM_OUTPUT' width='500px'/>
         </td>
     </tr>
+    <tr>
+        <td>
+            <img src='asserts/demo.gif' alt='DEMO_VIDEO' width='500px'/>
+        </td>
+        <td>
+            <img src='asserts/demo_output.gif' alt='DEMO_VIDEO_OUTPUT' width='500px'/>
+        </td>
+    </tr>
     </tbody>
 </table>
 
