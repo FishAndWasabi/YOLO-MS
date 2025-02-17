@@ -52,6 +52,8 @@ This repository contains the official implementation of the following paper:
 
 > Future work can be found in [todo.md](docs/todo.md).
 
+- **Feb, 2025**: Our code is also implemented based on [Jittor](https://github.com/Jittor/jittor), and avaliable at [nk-yolo](https://github.com/NK-JittorCV/nk-yolo)!
+- **Jan, 2025**: Our paper is accepted by TPAMI!
 - **Aug, 2023**: Our code is publicly available!
 
 ## 🛠️ Dependencies and Installation [🔝](#-table-of-contents)
@@ -558,13 +560,16 @@ python tools/analysis_tools/get_flops.py ${CONFIG_FILE} --shape 640 640 [optiona
 If you find our repo useful for your research, please cite us:
 
 ```
-@misc{chen2023yoloms,
-      title={YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-time Object Detection},
-      author={Yuming Chen and Xinbin Yuan and Ruiqi Wu and Jiabao Wang and Qibin Hou and Ming-Ming Cheng},
-      year={2023},
-      eprint={2308.05480},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{Chen2025,
+  title = {YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-time Object Detection},
+  ISSN = {1939-3539},
+  url = {http://dx.doi.org/10.1109/TPAMI.2025.3538473},
+  DOI = {10.1109/tpami.2025.3538473},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+  author = {Chen, Yuming and Yuan, Xinbin and Wang, Jiabao and Wu, Ruiqi and Li, Xiang and Hou, Qibin and Cheng, Ming-Ming},
+  year = {2025},
+  pages = {1–14}
 }
 ```
 
