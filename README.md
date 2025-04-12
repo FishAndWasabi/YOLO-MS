@@ -8,6 +8,8 @@
 
 </div>
 
+<b> The latest version presented in the PAMI will be released ASAP! </b>
+
 This repository contains the official implementation of the following paper:
 
 > **YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-Time Object Detection**<br/>
