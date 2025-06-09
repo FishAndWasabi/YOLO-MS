@@ -11,7 +11,7 @@ from mmcv.cnn import ConvModule
 
 from ..utils import autopad
 
-
+@MODELS.register_module()
 class MSBlockLayer(nn.Module):
     """MSBlockLayer
 
@@ -63,7 +63,7 @@ class MSBlockLayer(nn.Module):
         return x
         
 
-
+@MODELS.register_module()
 class MSBlock(nn.Module):
     """MSBlock
 

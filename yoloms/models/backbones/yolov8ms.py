@@ -33,7 +33,11 @@ class YOLOv8MS(BaseBackbone):
         'C3-K3579': [[MSBlock, 80, 160,   [1, (3,3),(3,3)], False], 
                      [MSBlock, 160, 320,  [1, (5,5),(5,5)], False],
                      [MSBlock, 320, 640,  [1, (7,7),(7,7)], False], 
-                     [MSBlock, 640, None, [1, (9,9),(9,9)], True]]
+                     [MSBlock, 640, None, [1, (9,9),(9,9)], True]],
+        'C4-K3579': [[MSBlock, 64, 128,   [1, (3,3),(3,3)], False], 
+                    [MSBlock, 128, 256,  [1, (5,5),(5,5)], False],
+                    [MSBlock, 256, 512,  [1, (7,7),(7,7)], False], 
+                    [MSBlock, 512, None, [1, (9,9),(9,9)], True]]
     }
 
     def __init__(self,
